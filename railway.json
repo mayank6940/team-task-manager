@@ -1,11 +1,11 @@
 {
-  "plugins": [
-    {
-      "name": "postgresql"
-    }
-  ],
+  "$schema": "https://railway.app/railway.schema.json",
+  "build": {
+    "builder": "NIXPACKS",
+    "buildCommand": "npm install && npm run build"
+  },
   "deploy": {
-    "start": "npm start",
-    "build": "npm run build"
+    "startCommand": "caddy run --config Caddyfile --adapter caddyfile",
+    "restartPolicyType": "ON_FAILURE"
   }
 }
