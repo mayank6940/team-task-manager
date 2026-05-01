@@ -35,6 +35,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   }, [token])
 
   const setToken = (t: string | null) => {
+    setIsLoading(true) // Set loading to true while we process the new token
     setTokenState(t)
     if (t) {
       localStorage.setItem('token', t)
@@ -48,6 +49,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       localStorage.removeItem('token')
       setUser(null)
     }
+    setIsLoading(false) // Done processing
   }
 
   return <AuthContext.Provider value={{ user, token, setToken, isLoading }}>{children}</AuthContext.Provider>
