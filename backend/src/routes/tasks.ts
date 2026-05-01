@@ -28,7 +28,7 @@ router.post(
           projectId,
           assignedToId: assignedTo || null,
           dueDate: dueDate ? new Date(dueDate) : null,
-          priority: priority || 'MEDIUM',
+          priority: priority || project.priority,
           createdById: (req as any).user.id
         }
       })
