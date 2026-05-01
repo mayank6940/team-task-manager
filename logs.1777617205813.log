@@ -1,0 +1,838 @@
+2026-05-01T06:30:59.931312813Z [inf]  Starting Container
+2026-05-01T06:31:00.405122386Z [inf]  > prisma migrate deploy && node dist/server.js
+2026-05-01T06:31:00.405130653Z [inf]  
+2026-05-01T06:31:00.405135102Z [inf]  Prisma schema loaded from prisma/schema.prisma
+2026-05-01T06:31:00.405140553Z [inf]  Datasource "db": PostgreSQL database "railway", schema "public" at "postgres.railway.internal:5432"
+2026-05-01T06:31:00.405144576Z [inf]  
+2026-05-01T06:31:00.405148777Z [inf]  2 migrations found in prisma/migrations
+2026-05-01T06:31:00.405152158Z [inf]  
+2026-05-01T06:31:00.405155607Z [inf]  
+2026-05-01T06:31:00.405159327Z [inf]  No pending migrations to apply.
+2026-05-01T06:31:00.405163021Z [err]  node:internal/modules/cjs/loader:1386
+2026-05-01T06:31:00.405167229Z [err]    throw err;
+2026-05-01T06:31:00.405171750Z [err]    ^
+2026-05-01T06:31:00.405176397Z [err]  
+2026-05-01T06:31:00.405179646Z [err]  Error: Cannot find module '/app/backend/dist/server.js'
+2026-05-01T06:31:00.405183096Z [err]      at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+2026-05-01T06:31:00.405186644Z [err]      at defaultResolveImpl (node:internal/modules/cjs/loader:1025:19)
+2026-05-01T06:31:00.405190039Z [err]      at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1030:22)
+2026-05-01T06:31:00.405194858Z [err]      at Function._load (node:internal/modules/cjs/loader:1192:37)
+2026-05-01T06:31:00.405198962Z [err]      at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+2026-05-01T06:31:00.405244306Z [err]  npm warn config production Use `--omit=dev` instead.
+2026-05-01T06:31:00.405248239Z [inf]  
+2026-05-01T06:31:00.405251638Z [inf]  > start
+2026-05-01T06:31:00.405255960Z [inf]  > cd backend && npm run start:prod
+2026-05-01T06:31:00.405259351Z [inf]  
+2026-05-01T06:31:00.405263089Z [err]  npm warn config production Use `--omit=dev` instead.
+2026-05-01T06:31:00.405266744Z [inf]  
+2026-05-01T06:31:00.405270092Z [inf]  > team-task-manager-backend@0.1.0 start:prod
+2026-05-01T06:31:00.406733776Z [err]      at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+2026-05-01T06:31:00.406736630Z [err]      at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)
+2026-05-01T06:31:00.406739575Z [err]      at node:internal/main/run_main_module:36:49 {
+2026-05-01T06:31:00.406742556Z [err]    code: 'MODULE_NOT_FOUND',
+2026-05-01T06:31:00.406746243Z [err]    requireStack: []
+2026-05-01T06:31:00.406749063Z [err]  }
+2026-05-01T06:31:00.406751899Z [err]  
+2026-05-01T06:31:00.406754565Z [err]  Node.js v22.22.2
+2026-05-01T06:31:00.406758557Z [err]  npm error Lifecycle script `start:prod` failed with error:
+2026-05-01T06:31:00.406761696Z [err]  npm error code 1
+2026-05-01T06:31:00.406764770Z [err]  npm error path /app/backend
+2026-05-01T06:31:00.406767765Z [err]  npm error workspace team-task-manager-backend@0.1.0
+2026-05-01T06:31:00.406770662Z [err]  npm error location /app/backend
+2026-05-01T06:31:00.406773994Z [err]  npm error command failed
+2026-05-01T06:31:00.406776983Z [err]  npm error command sh -c prisma migrate deploy && node dist/server.js
+2026-05-01T06:31:00.548424486Z [err]  npm warn config production Use `--omit=dev` instead.
+2026-05-01T06:31:00.563452491Z [inf]  
+2026-05-01T06:31:00.563457360Z [inf]  > start
+2026-05-01T06:31:00.563460907Z [inf]  > cd backend && npm run start:prod
+2026-05-01T06:31:00.563463808Z [inf]  
+2026-05-01T06:31:00.645256011Z [err]  npm warn config production Use `--omit=dev` instead.
+2026-05-01T06:31:00.653035290Z [inf]  
+2026-05-01T06:31:00.653041031Z [inf]  > team-task-manager-backend@0.1.0 start:prod
+2026-05-01T06:31:00.653045248Z [inf]  > prisma migrate deploy && node dist/server.js
+2026-05-01T06:31:00.653049220Z [inf]  
+2026-05-01T06:31:00.969879032Z [inf]  Prisma schema loaded from prisma/schema.prisma
+2026-05-01T06:31:00.969884742Z [inf]  Datasource "db": PostgreSQL database "railway", schema "public" at "postgres.railway.internal:5432"
+2026-05-01T06:31:01.012908258Z [inf]  
+2026-05-01T06:31:01.012916818Z [inf]  2 migrations found in prisma/migrations
+2026-05-01T06:31:01.012921456Z [inf]  
+2026-05-01T06:31:01.422198306Z [err]  npm error code 1
+2026-05-01T06:31:01.422207132Z [err]  npm error path /app/backend
+2026-05-01T06:31:01.422213618Z [err]  npm error workspace team-task-manager-backend@0.1.0
+2026-05-01T06:31:01.422217331Z [err]      at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)
+2026-05-01T06:31:01.422220591Z [err]  npm error location /app/backend
+2026-05-01T06:31:01.422225628Z [err]      at node:internal/main/run_main_module:36:49 {
+2026-05-01T06:31:01.422230371Z [err]    code: 'MODULE_NOT_FOUND',
+2026-05-01T06:31:01.422236081Z [err]    requireStack: []
+2026-05-01T06:31:01.422240911Z [err]  }
+2026-05-01T06:31:01.422242425Z [inf]  
+2026-05-01T06:31:01.422246933Z [inf]  No pending migrations to apply.
+2026-05-01T06:31:01.422247315Z [err]  
+2026-05-01T06:31:01.422252040Z [err]  node:internal/modules/cjs/loader:1386
+2026-05-01T06:31:01.422253546Z [err]  Node.js v22.22.2
+2026-05-01T06:31:01.422257089Z [err]    throw err;
+2026-05-01T06:31:01.422258569Z [err]  npm error Lifecycle script `start:prod` failed with error:
+2026-05-01T06:31:01.422261040Z [err]    ^
+2026-05-01T06:31:01.422264206Z [err]  
+2026-05-01T06:31:01.422267078Z [err]  Error: Cannot find module '/app/backend/dist/server.js'
+2026-05-01T06:31:01.422270086Z [err]      at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+2026-05-01T06:31:01.422273052Z [err]      at defaultResolveImpl (node:internal/modules/cjs/loader:1025:19)
+2026-05-01T06:31:01.422276209Z [err]      at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1030:22)
+2026-05-01T06:31:01.422279188Z [err]      at Function._load (node:internal/modules/cjs/loader:1192:37)
+2026-05-01T06:31:01.422282543Z [err]      at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+2026-05-01T06:31:01.422285389Z [err]      at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+2026-05-01T06:31:01.423534604Z [err]  npm error command failed
+2026-05-01T06:31:01.423538225Z [err]  npm error command sh -c prisma migrate deploy && node dist/server.js
+2026-05-01T06:31:01.920107901Z [err]  npm warn config production Use `--omit=dev` instead.
+2026-05-01T06:31:01.934931452Z [inf]  
+2026-05-01T06:31:01.934935631Z [inf]  > start
+2026-05-01T06:31:01.934938721Z [inf]  > cd backend && npm run start:prod
+2026-05-01T06:31:01.934941491Z [inf]  
+2026-05-01T06:31:02.048442411Z [inf]  
+2026-05-01T06:31:02.048449982Z [inf]  > team-task-manager-backend@0.1.0 start:prod
+2026-05-01T06:31:02.048454786Z [inf]  > prisma migrate deploy && node dist/server.js
+2026-05-01T06:31:02.048458256Z [inf]  
+2026-05-01T06:31:02.048484216Z [err]  npm warn config production Use `--omit=dev` instead.
+2026-05-01T06:31:02.415917686Z [inf]  
+2026-05-01T06:31:02.415928621Z [inf]  Prisma schema loaded from prisma/schema.prisma
+2026-05-01T06:31:02.415937484Z [inf]  Datasource "db": PostgreSQL database "railway", schema "public" at "postgres.railway.internal:5432"
+2026-05-01T06:31:02.415942267Z [inf]  
+2026-05-01T06:31:02.415946229Z [inf]  2 migrations found in prisma/migrations
+2026-05-01T06:31:02.475332566Z [inf]  
+2026-05-01T06:31:02.475335806Z [inf]  No pending migrations to apply.
+2026-05-01T06:31:02.495276443Z [err]  node:internal/modules/cjs/loader:1386
+2026-05-01T06:31:02.495278097Z [err]      at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+2026-05-01T06:31:02.495282249Z [err]    throw err;
+2026-05-01T06:31:02.495287445Z [err]      at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)
+2026-05-01T06:31:02.495287820Z [err]    ^
+2026-05-01T06:31:02.495293613Z [err]  
+2026-05-01T06:31:02.495294207Z [err]      at node:internal/main/run_main_module:36:49 {
+2026-05-01T06:31:02.495299051Z [err]  Error: Cannot find module '/app/backend/dist/server.js'
+2026-05-01T06:31:02.495299723Z [err]    code: 'MODULE_NOT_FOUND',
+2026-05-01T06:31:02.495304980Z [err]      at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+2026-05-01T06:31:02.495305624Z [err]    requireStack: []
+2026-05-01T06:31:02.495310378Z [err]      at defaultResolveImpl (node:internal/modules/cjs/loader:1025:19)
+2026-05-01T06:31:02.495314255Z [err]  }
+2026-05-01T06:31:02.495314992Z [err]      at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1030:22)
+2026-05-01T06:31:02.495320592Z [err]      at Function._load (node:internal/modules/cjs/loader:1192:37)
+2026-05-01T06:31:02.495320939Z [err]  
+2026-05-01T06:31:02.495326289Z [err]  Node.js v22.22.2
+2026-05-01T06:31:02.495326513Z [err]      at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+2026-05-01T06:31:02.503268572Z [err]  npm error Lifecycle script `start:prod` failed with error:
+2026-05-01T06:31:02.503274195Z [err]  npm error code 1
+2026-05-01T06:31:02.503277720Z [err]  npm error path /app/backend
+2026-05-01T06:31:02.503280892Z [err]  npm error workspace team-task-manager-backend@0.1.0
+2026-05-01T06:31:02.503284416Z [err]  npm error location /app/backend
+2026-05-01T06:31:02.503287662Z [err]  npm error command failed
+2026-05-01T06:31:02.503291050Z [err]  npm error command sh -c prisma migrate deploy && node dist/server.js
+2026-05-01T06:31:03.448795476Z [err]  npm warn config production Use `--omit=dev` instead.
+2026-05-01T06:31:03.448799307Z [inf]  
+2026-05-01T06:31:03.448802929Z [inf]  > start
+2026-05-01T06:31:03.448806575Z [inf]  > cd backend && npm run start:prod
+2026-05-01T06:31:03.448810390Z [inf]  
+2026-05-01T06:31:03.448813991Z [err]  npm warn config production Use `--omit=dev` instead.
+2026-05-01T06:31:03.448817229Z [inf]  
+2026-05-01T06:31:03.448820568Z [inf]  > team-task-manager-backend@0.1.0 start:prod
+2026-05-01T06:31:03.448824875Z [inf]  > prisma migrate deploy && node dist/server.js
+2026-05-01T06:31:03.448828794Z [inf]  
+2026-05-01T06:31:03.592692752Z [inf]  Prisma schema loaded from prisma/schema.prisma
+2026-05-01T06:31:03.592697176Z [inf]  Datasource "db": PostgreSQL database "railway", schema "public" at "postgres.railway.internal:5432"
+2026-05-01T06:31:03.654257849Z [inf]  
+2026-05-01T06:31:03.654260547Z [inf]  2 migrations found in prisma/migrations
+2026-05-01T06:31:03.654263260Z [inf]  
+2026-05-01T06:31:03.691444671Z [inf]  
+2026-05-01T06:31:03.691449924Z [inf]  No pending migrations to apply.
+2026-05-01T06:31:03.729138169Z [err]  Node.js v22.22.2
+2026-05-01T06:31:03.729156356Z [err]  node:internal/modules/cjs/loader:1386
+2026-05-01T06:31:03.729159499Z [err]    throw err;
+2026-05-01T06:31:03.729162325Z [err]    ^
+2026-05-01T06:31:03.729165573Z [err]  
+2026-05-01T06:31:03.729168482Z [err]  Error: Cannot find module '/app/backend/dist/server.js'
+2026-05-01T06:31:03.729172299Z [err]      at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+2026-05-01T06:31:03.729175093Z [err]      at defaultResolveImpl (node:internal/modules/cjs/loader:1025:19)
+2026-05-01T06:31:03.729177899Z [err]      at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1030:22)
+2026-05-01T06:31:03.729180693Z [err]      at Function._load (node:internal/modules/cjs/loader:1192:37)
+2026-05-01T06:31:03.729183269Z [err]      at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+2026-05-01T06:31:03.729185936Z [err]      at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+2026-05-01T06:31:03.729188602Z [err]      at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)
+2026-05-01T06:31:03.729191292Z [err]      at node:internal/main/run_main_module:36:49 {
+2026-05-01T06:31:03.729194114Z [err]    code: 'MODULE_NOT_FOUND',
+2026-05-01T06:31:03.729196778Z [err]    requireStack: []
+2026-05-01T06:31:03.729199452Z [err]  }
+2026-05-01T06:31:03.729202515Z [err]  
+2026-05-01T06:31:03.731527391Z [err]  npm error Lifecycle script `start:prod` failed with error:
+2026-05-01T06:31:03.731531801Z [err]  npm error code 1
+2026-05-01T06:31:03.731535065Z [err]  npm error path /app/backend
+2026-05-01T06:31:03.731538113Z [err]  npm error workspace team-task-manager-backend@0.1.0
+2026-05-01T06:31:03.731542687Z [err]  npm error location /app/backend
+2026-05-01T06:31:03.731545533Z [err]  npm error command failed
+2026-05-01T06:31:03.731548713Z [err]  npm error command sh -c prisma migrate deploy && node dist/server.js
+2026-05-01T06:31:04.449555619Z [err]  npm warn config production Use `--omit=dev` instead.
+2026-05-01T06:31:04.458442293Z [inf]  
+2026-05-01T06:31:04.458447000Z [inf]  > start
+2026-05-01T06:31:04.458450398Z [inf]  > cd backend && npm run start:prod
+2026-05-01T06:31:04.458453389Z [inf]  
+2026-05-01T06:31:04.538663432Z [err]  npm warn config production Use `--omit=dev` instead.
+2026-05-01T06:31:04.546450253Z [inf]  
+2026-05-01T06:31:04.546455224Z [inf]  > team-task-manager-backend@0.1.0 start:prod
+2026-05-01T06:31:04.546459033Z [inf]  > prisma migrate deploy && node dist/server.js
+2026-05-01T06:31:04.546463358Z [inf]  
+2026-05-01T06:31:04.838780217Z [inf]  Prisma schema loaded from prisma/schema.prisma
+2026-05-01T06:31:04.840989103Z [inf]  Datasource "db": PostgreSQL database "railway", schema "public" at "postgres.railway.internal:5432"
+2026-05-01T06:31:04.992145720Z [inf]  
+2026-05-01T06:31:04.992149179Z [inf]  2 migrations found in prisma/migrations
+2026-05-01T06:31:04.992152226Z [inf]  
+2026-05-01T06:31:04.995074512Z [inf]  
+2026-05-01T06:31:04.995079239Z [inf]  No pending migrations to apply.
+2026-05-01T06:31:05.034245053Z [err]      at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)
+2026-05-01T06:31:05.034253197Z [err]      at node:internal/main/run_main_module:36:49 {
+2026-05-01T06:31:05.034260174Z [err]    code: 'MODULE_NOT_FOUND',
+2026-05-01T06:31:05.034265457Z [err]    requireStack: []
+2026-05-01T06:31:05.034270450Z [err]  }
+2026-05-01T06:31:05.034275998Z [err]  node:internal/modules/cjs/loader:1386
+2026-05-01T06:31:05.034278944Z [err]  
+2026-05-01T06:31:05.034281979Z [err]    throw err;
+2026-05-01T06:31:05.034287805Z [err]  Node.js v22.22.2
+2026-05-01T06:31:05.034288895Z [err]    ^
+2026-05-01T06:31:05.034293828Z [err]  
+2026-05-01T06:31:05.034298337Z [err]  Error: Cannot find module '/app/backend/dist/server.js'
+2026-05-01T06:31:05.034301623Z [err]      at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+2026-05-01T06:31:05.034304778Z [err]      at defaultResolveImpl (node:internal/modules/cjs/loader:1025:19)
+2026-05-01T06:31:05.034307783Z [err]      at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1030:22)
+2026-05-01T06:31:05.034310589Z [err]      at Function._load (node:internal/modules/cjs/loader:1192:37)
+2026-05-01T06:31:05.034314357Z [err]      at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+2026-05-01T06:31:05.034317472Z [err]      at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+2026-05-01T06:31:05.042458351Z [err]  npm error Lifecycle script `start:prod` failed with error:
+2026-05-01T06:31:05.042463146Z [err]  npm error code 1
+2026-05-01T06:31:05.042466839Z [err]  npm error path /app/backend
+2026-05-01T06:31:05.042469711Z [err]  npm error workspace team-task-manager-backend@0.1.0
+2026-05-01T06:31:05.042473561Z [err]  npm error location /app/backend
+2026-05-01T06:31:05.042476323Z [err]  npm error command failed
+2026-05-01T06:31:05.042479346Z [err]  npm error command sh -c prisma migrate deploy && node dist/server.js
+2026-05-01T06:31:05.736626443Z [err]  npm warn config production Use `--omit=dev` instead.
+2026-05-01T06:31:05.751964174Z [inf]  
+2026-05-01T06:31:05.751971833Z [inf]  > start
+2026-05-01T06:31:05.751976811Z [inf]  > cd backend && npm run start:prod
+2026-05-01T06:31:05.751981352Z [inf]  
+2026-05-01T06:31:05.829023078Z [err]  npm warn config production Use `--omit=dev` instead.
+2026-05-01T06:31:05.844304593Z [inf]  
+2026-05-01T06:31:05.844308823Z [inf]  > team-task-manager-backend@0.1.0 start:prod
+2026-05-01T06:31:05.844312719Z [inf]  > prisma migrate deploy && node dist/server.js
+2026-05-01T06:31:05.844315717Z [inf]  
+2026-05-01T06:31:06.452797936Z [inf]  2 migrations found in prisma/migrations
+2026-05-01T06:31:06.452799572Z [err]  Node.js v22.22.2
+2026-05-01T06:31:06.452803937Z [inf]  No pending migrations to apply.
+2026-05-01T06:31:06.452810868Z [err]  node:internal/modules/cjs/loader:1386
+2026-05-01T06:31:06.452812070Z [inf]  
+2026-05-01T06:31:06.452815411Z [err]  Error: Cannot find module '/app/backend/dist/server.js'
+2026-05-01T06:31:06.452815955Z [err]    throw err;
+2026-05-01T06:31:06.452816163Z [err]      at defaultResolveImpl (node:internal/modules/cjs/loader:1025:19)
+2026-05-01T06:31:06.452820612Z [inf]  
+2026-05-01T06:31:06.452821447Z [err]      at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+2026-05-01T06:31:06.452826255Z [err]  }
+2026-05-01T06:31:06.452826778Z [err]    ^
+2026-05-01T06:31:06.452830660Z [err]      at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+2026-05-01T06:31:06.452831523Z [err]      at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)
+2026-05-01T06:31:06.452833935Z [err]      at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1030:22)
+2026-05-01T06:31:06.452837252Z [err]  
+2026-05-01T06:31:06.452838420Z [err]  
+2026-05-01T06:31:06.452845937Z [err]    code: 'MODULE_NOT_FOUND',
+2026-05-01T06:31:06.452847496Z [inf]  Prisma schema loaded from prisma/schema.prisma
+2026-05-01T06:31:06.452850370Z [err]      at node:internal/main/run_main_module:36:49 {
+2026-05-01T06:31:06.452855617Z [inf]  Datasource "db": PostgreSQL database "railway", schema "public" at "postgres.railway.internal:5432"
+2026-05-01T06:31:06.452856701Z [err]    requireStack: []
+2026-05-01T06:31:06.452861019Z [inf]  
+2026-05-01T06:31:06.452868321Z [err]      at Function._load (node:internal/modules/cjs/loader:1192:37)
+2026-05-01T06:31:06.452875713Z [err]      at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+2026-05-01T06:31:06.454409131Z [err]  npm error command sh -c prisma migrate deploy && node dist/server.js
+2026-05-01T06:31:06.454413486Z [err]  npm error Lifecycle script `start:prod` failed with error:
+2026-05-01T06:31:06.454417006Z [err]  npm error workspace team-task-manager-backend@0.1.0
+2026-05-01T06:31:06.454421862Z [err]  npm error code 1
+2026-05-01T06:31:06.454422693Z [err]  npm error location /app/backend
+2026-05-01T06:31:06.454429212Z [err]  npm error command failed
+2026-05-01T06:31:06.454430307Z [err]  npm error path /app/backend
+2026-05-01T06:31:07.019806423Z [err]  npm warn config production Use `--omit=dev` instead.
+2026-05-01T06:31:07.046561054Z [inf]  
+2026-05-01T06:31:07.046566329Z [inf]  > start
+2026-05-01T06:31:07.046571817Z [inf]  > cd backend && npm run start:prod
+2026-05-01T06:31:07.046577001Z [inf]  
+2026-05-01T06:31:07.457113048Z [inf]  > prisma migrate deploy && node dist/server.js
+2026-05-01T06:31:07.457122124Z [inf]  
+2026-05-01T06:31:07.457127367Z [inf]  Prisma schema loaded from prisma/schema.prisma
+2026-05-01T06:31:07.457132631Z [inf]  Datasource "db": PostgreSQL database "railway", schema "public" at "postgres.railway.internal:5432"
+2026-05-01T06:31:07.457158328Z [err]  npm warn config production Use `--omit=dev` instead.
+2026-05-01T06:31:07.457161799Z [inf]  
+2026-05-01T06:31:07.457165480Z [inf]  > team-task-manager-backend@0.1.0 start:prod
+2026-05-01T06:31:07.517335625Z [inf]  
+2026-05-01T06:31:07.517340698Z [inf]  2 migrations found in prisma/migrations
+2026-05-01T06:31:07.517344442Z [inf]  
+2026-05-01T06:31:07.570135023Z [inf]  
+2026-05-01T06:31:07.570140678Z [inf]  No pending migrations to apply.
+2026-05-01T06:31:07.599841931Z [err]  node:internal/modules/cjs/loader:1386
+2026-05-01T06:31:07.599848323Z [err]    throw err;
+2026-05-01T06:31:07.599852658Z [err]    ^
+2026-05-01T06:31:07.599861472Z [err]  
+2026-05-01T06:31:07.599866798Z [err]  Error: Cannot find module '/app/backend/dist/server.js'
+2026-05-01T06:31:07.599870515Z [err]      at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+2026-05-01T06:31:07.599873617Z [err]      at defaultResolveImpl (node:internal/modules/cjs/loader:1025:19)
+2026-05-01T06:31:07.599877018Z [err]      at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1030:22)
+2026-05-01T06:31:07.599880480Z [err]      at Function._load (node:internal/modules/cjs/loader:1192:37)
+2026-05-01T06:31:07.599884156Z [err]      at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+2026-05-01T06:31:07.599887666Z [err]      at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+2026-05-01T06:31:07.599891199Z [err]      at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)
+2026-05-01T06:31:07.599894425Z [err]      at node:internal/main/run_main_module:36:49 {
+2026-05-01T06:31:07.599898624Z [err]    code: 'MODULE_NOT_FOUND',
+2026-05-01T06:31:07.599902675Z [err]    requireStack: []
+2026-05-01T06:31:07.599907196Z [err]  }
+2026-05-01T06:31:07.599911511Z [err]  
+2026-05-01T06:31:07.599915676Z [err]  Node.js v22.22.2
+2026-05-01T06:31:07.606578224Z [err]  npm error Lifecycle script `start:prod` failed with error:
+2026-05-01T06:31:07.606585884Z [err]  npm error code 1
+2026-05-01T06:31:07.606593712Z [err]  npm error path /app/backend
+2026-05-01T06:31:07.606598613Z [err]  npm error workspace team-task-manager-backend@0.1.0
+2026-05-01T06:31:07.606603233Z [err]  npm error location /app/backend
+2026-05-01T06:31:07.606608369Z [err]  npm error command failed
+2026-05-01T06:31:07.606613114Z [err]  npm error command sh -c prisma migrate deploy && node dist/server.js
+2026-05-01T06:31:08.452162602Z [inf]  > cd backend && npm run start:prod
+2026-05-01T06:31:08.452164446Z [inf]  > prisma migrate deploy && node dist/server.js
+2026-05-01T06:31:08.452169334Z [inf]  
+2026-05-01T06:31:08.452172880Z [inf]  
+2026-05-01T06:31:08.452175569Z [err]  npm warn config production Use `--omit=dev` instead.
+2026-05-01T06:31:08.452202681Z [inf]  
+2026-05-01T06:31:08.452213156Z [inf]  > team-task-manager-backend@0.1.0 start:prod
+2026-05-01T06:31:08.452226891Z [err]  npm warn config production Use `--omit=dev` instead.
+2026-05-01T06:31:08.452232099Z [inf]  
+2026-05-01T06:31:08.452237220Z [inf]  > start
+2026-05-01T06:31:08.738389920Z [inf]  Prisma schema loaded from prisma/schema.prisma
+2026-05-01T06:31:08.738394748Z [inf]  Datasource "db": PostgreSQL database "railway", schema "public" at "postgres.railway.internal:5432"
+2026-05-01T06:31:08.794720839Z [inf]  
+2026-05-01T06:31:08.794723891Z [inf]  2 migrations found in prisma/migrations
+2026-05-01T06:31:08.794726830Z [inf]  
+2026-05-01T06:31:08.838207140Z [inf]  
+2026-05-01T06:31:08.838212297Z [inf]  No pending migrations to apply.
+2026-05-01T06:31:08.887864268Z [err]  node:internal/modules/cjs/loader:1386
+2026-05-01T06:31:08.887871275Z [err]    throw err;
+2026-05-01T06:31:08.887875070Z [err]    ^
+2026-05-01T06:31:08.887878914Z [err]  
+2026-05-01T06:31:08.887882693Z [err]  Error: Cannot find module '/app/backend/dist/server.js'
+2026-05-01T06:31:08.887892908Z [err]      at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+2026-05-01T06:31:08.887896820Z [err]      at defaultResolveImpl (node:internal/modules/cjs/loader:1025:19)
+2026-05-01T06:31:08.887900617Z [err]      at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1030:22)
+2026-05-01T06:31:08.887905659Z [err]      at Function._load (node:internal/modules/cjs/loader:1192:37)
+2026-05-01T06:31:08.887910831Z [err]      at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+2026-05-01T06:31:08.887914260Z [err]      at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+2026-05-01T06:31:08.887917493Z [err]      at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)
+2026-05-01T06:31:08.887920922Z [err]      at node:internal/main/run_main_module:36:49 {
+2026-05-01T06:31:08.887924845Z [err]    code: 'MODULE_NOT_FOUND',
+2026-05-01T06:31:08.887928226Z [err]    requireStack: []
+2026-05-01T06:31:08.887931856Z [err]  }
+2026-05-01T06:31:08.887936903Z [err]  
+2026-05-01T06:31:08.887940562Z [err]  Node.js v22.22.2
+2026-05-01T06:31:08.887944098Z [err]  npm error Lifecycle script `start:prod` failed with error:
+2026-05-01T06:31:08.887947517Z [err]  npm error code 1
+2026-05-01T06:31:08.887950849Z [err]  npm error path /app/backend
+2026-05-01T06:31:08.887953963Z [err]  npm error workspace team-task-manager-backend@0.1.0
+2026-05-01T06:31:08.887957122Z [err]  npm error location /app/backend
+2026-05-01T06:31:08.887960160Z [err]  npm error command failed
+2026-05-01T06:31:08.887962998Z [err]  npm error command sh -c prisma migrate deploy && node dist/server.js
+2026-05-01T06:31:09.599187072Z [err]  npm warn config production Use `--omit=dev` instead.
+2026-05-01T06:31:09.615622813Z [inf]  
+2026-05-01T06:31:09.615627065Z [inf]  > start
+2026-05-01T06:31:09.615630348Z [inf]  > cd backend && npm run start:prod
+2026-05-01T06:31:09.615633462Z [inf]  
+2026-05-01T06:31:09.707721591Z [err]  npm warn config production Use `--omit=dev` instead.
+2026-05-01T06:31:09.707729605Z [inf]  
+2026-05-01T06:31:09.707734447Z [inf]  > team-task-manager-backend@0.1.0 start:prod
+2026-05-01T06:31:09.707738604Z [inf]  > prisma migrate deploy && node dist/server.js
+2026-05-01T06:31:09.707742163Z [inf]  
+2026-05-01T06:31:10.004032336Z [inf]  Prisma schema loaded from prisma/schema.prisma
+2026-05-01T06:31:10.004037534Z [inf]  Datasource "db": PostgreSQL database "railway", schema "public" at "postgres.railway.internal:5432"
+2026-05-01T06:31:10.088271007Z [inf]  
+2026-05-01T06:31:10.088273773Z [inf]  2 migrations found in prisma/migrations
+2026-05-01T06:31:10.088276897Z [inf]  
+2026-05-01T06:31:10.460350170Z [inf]  
+2026-05-01T06:31:10.460353469Z [inf]  No pending migrations to apply.
+2026-05-01T06:31:10.460356463Z [err]  node:internal/modules/cjs/loader:1386
+2026-05-01T06:31:10.460359618Z [err]    throw err;
+2026-05-01T06:31:10.460363169Z [err]    ^
+2026-05-01T06:31:10.460366646Z [err]  
+2026-05-01T06:31:10.460370112Z [err]  Error: Cannot find module '/app/backend/dist/server.js'
+2026-05-01T06:31:10.460374015Z [err]      at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+2026-05-01T06:31:10.460377193Z [err]      at defaultResolveImpl (node:internal/modules/cjs/loader:1025:19)
+2026-05-01T06:31:10.460380400Z [err]      at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1030:22)
+2026-05-01T06:31:10.460383589Z [err]      at Function._load (node:internal/modules/cjs/loader:1192:37)
+2026-05-01T06:31:10.460386487Z [err]      at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+2026-05-01T06:31:10.460389396Z [err]      at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+2026-05-01T06:31:10.460392531Z [err]      at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)
+2026-05-01T06:31:10.460395685Z [err]      at node:internal/main/run_main_module:36:49 {
+2026-05-01T06:31:10.460398871Z [err]    code: 'MODULE_NOT_FOUND',
+2026-05-01T06:31:10.460402018Z [err]    requireStack: []
+2026-05-01T06:31:10.460404956Z [err]  }
+2026-05-01T06:31:10.460408485Z [err]  
+2026-05-01T06:31:10.460411501Z [err]  Node.js v22.22.2
+2026-05-01T06:31:10.460414460Z [err]  npm error Lifecycle script `start:prod` failed with error:
+2026-05-01T06:31:10.460417437Z [err]  npm error code 1
+2026-05-01T06:31:10.460420371Z [err]  npm error path /app/backend
+2026-05-01T06:31:10.460423091Z [err]  npm error workspace team-task-manager-backend@0.1.0
+2026-05-01T06:31:10.460425933Z [err]  npm error location /app/backend
+2026-05-01T06:31:10.461161561Z [err]  npm error command failed
+2026-05-01T06:31:10.461164742Z [err]  npm error command sh -c prisma migrate deploy && node dist/server.js
+2026-05-01T06:31:10.905825928Z [err]  npm warn config production Use `--omit=dev` instead.
+2026-05-01T06:31:10.925815866Z [inf]  
+2026-05-01T06:31:10.925819515Z [inf]  > start
+2026-05-01T06:31:10.925824805Z [inf]  > cd backend && npm run start:prod
+2026-05-01T06:31:10.925828285Z [inf]  
+2026-05-01T06:31:11.008019841Z [err]  npm warn config production Use `--omit=dev` instead.
+2026-05-01T06:31:11.021781291Z [inf]  
+2026-05-01T06:31:11.021788374Z [inf]  > team-task-manager-backend@0.1.0 start:prod
+2026-05-01T06:31:11.021791967Z [inf]  > prisma migrate deploy && node dist/server.js
+2026-05-01T06:31:11.021795359Z [inf]  
+2026-05-01T06:31:11.461951326Z [err]    throw err;
+2026-05-01T06:31:11.461953901Z [err]    code: 'MODULE_NOT_FOUND',
+2026-05-01T06:31:11.461958820Z [err]    ^
+2026-05-01T06:31:11.461964261Z [err]    requireStack: []
+2026-05-01T06:31:11.461965917Z [err]  
+2026-05-01T06:31:11.461972537Z [err]  Error: Cannot find module '/app/backend/dist/server.js'
+2026-05-01T06:31:11.461973010Z [err]  }
+2026-05-01T06:31:11.461978060Z [err]      at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+2026-05-01T06:31:11.461981320Z [err]  
+2026-05-01T06:31:11.461986824Z [err]      at defaultResolveImpl (node:internal/modules/cjs/loader:1025:19)
+2026-05-01T06:31:11.461989467Z [err]  Node.js v22.22.2
+2026-05-01T06:31:11.461993068Z [err]      at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1030:22)
+2026-05-01T06:31:11.461996725Z [err]      at Function._load (node:internal/modules/cjs/loader:1192:37)
+2026-05-01T06:31:11.462000724Z [err]      at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+2026-05-01T06:31:11.462011930Z [err]      at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+2026-05-01T06:31:11.462016271Z [err]      at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)
+2026-05-01T06:31:11.462019473Z [err]      at node:internal/main/run_main_module:36:49 {
+2026-05-01T06:31:11.462090513Z [inf]  Prisma schema loaded from prisma/schema.prisma
+2026-05-01T06:31:11.462094875Z [inf]  Datasource "db": PostgreSQL database "railway", schema "public" at "postgres.railway.internal:5432"
+2026-05-01T06:31:11.462100419Z [inf]  
+2026-05-01T06:31:11.462104549Z [inf]  2 migrations found in prisma/migrations
+2026-05-01T06:31:11.462108940Z [inf]  
+2026-05-01T06:31:11.462114346Z [inf]  
+2026-05-01T06:31:11.462118639Z [inf]  No pending migrations to apply.
+2026-05-01T06:31:11.462123235Z [err]  node:internal/modules/cjs/loader:1386
+2026-05-01T06:31:11.463282930Z [err]  npm error Lifecycle script `start:prod` failed with error:
+2026-05-01T06:31:11.463287627Z [err]  npm error code 1
+2026-05-01T06:31:11.463294854Z [err]  npm error path /app/backend
+2026-05-01T06:31:11.463299756Z [err]  npm error workspace team-task-manager-backend@0.1.0
+2026-05-01T06:31:11.463304036Z [err]  npm error location /app/backend
+2026-05-01T06:31:11.463308610Z [err]  npm error command failed
+2026-05-01T06:31:11.463313196Z [err]  npm error command sh -c prisma migrate deploy && node dist/server.js
+2026-05-01T06:31:12.475109773Z [inf]  
+2026-05-01T06:31:12.475117563Z [inf]  > team-task-manager-backend@0.1.0 start:prod
+2026-05-01T06:31:12.475122472Z [inf]  > prisma migrate deploy && node dist/server.js
+2026-05-01T06:31:12.475123879Z [err]  npm warn config production Use `--omit=dev` instead.
+2026-05-01T06:31:12.475127951Z [inf]  
+2026-05-01T06:31:12.475131591Z [inf]  
+2026-05-01T06:31:12.475136612Z [inf]  > start
+2026-05-01T06:31:12.475144534Z [inf]  > cd backend && npm run start:prod
+2026-05-01T06:31:12.475152157Z [inf]  
+2026-05-01T06:31:12.475165489Z [err]  npm warn config production Use `--omit=dev` instead.
+2026-05-01T06:31:12.660046253Z [inf]  Prisma schema loaded from prisma/schema.prisma
+2026-05-01T06:31:12.660054372Z [inf]  Datasource "db": PostgreSQL database "railway", schema "public" at "postgres.railway.internal:5432"
+2026-05-01T06:31:12.743691132Z [inf]  
+2026-05-01T06:31:12.743695161Z [inf]  2 migrations found in prisma/migrations
+2026-05-01T06:31:12.743700309Z [inf]  
+2026-05-01T06:31:12.797936865Z [inf]  
+2026-05-01T06:31:12.797942710Z [inf]  No pending migrations to apply.
+2026-05-01T06:31:12.841227541Z [err]  Node.js v22.22.2
+2026-05-01T06:31:12.841239613Z [err]  npm error Lifecycle script `start:prod` failed with error:
+2026-05-01T06:31:12.841245429Z [err]  npm error code 1
+2026-05-01T06:31:12.841249973Z [err]  npm error path /app/backend
+2026-05-01T06:31:12.841256013Z [err]  npm error workspace team-task-manager-backend@0.1.0
+2026-05-01T06:31:12.841261481Z [err]  npm error location /app/backend
+2026-05-01T06:31:12.841266435Z [err]  npm error command failed
+2026-05-01T06:31:12.841272109Z [err]  npm error command sh -c prisma migrate deploy && node dist/server.js
+2026-05-01T06:31:12.841285722Z [err]  node:internal/modules/cjs/loader:1386
+2026-05-01T06:31:12.841290993Z [err]    throw err;
+2026-05-01T06:31:12.841294751Z [err]    ^
+2026-05-01T06:31:12.841300209Z [err]  
+2026-05-01T06:31:12.841303608Z [err]  Error: Cannot find module '/app/backend/dist/server.js'
+2026-05-01T06:31:12.841307746Z [err]      at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+2026-05-01T06:31:12.841311861Z [err]      at defaultResolveImpl (node:internal/modules/cjs/loader:1025:19)
+2026-05-01T06:31:12.841315022Z [err]      at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1030:22)
+2026-05-01T06:31:12.841318200Z [err]      at Function._load (node:internal/modules/cjs/loader:1192:37)
+2026-05-01T06:31:12.841321240Z [err]      at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+2026-05-01T06:31:12.841324563Z [err]      at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+2026-05-01T06:31:12.841327908Z [err]      at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)
+2026-05-01T06:31:12.841331443Z [err]      at node:internal/main/run_main_module:36:49 {
+2026-05-01T06:31:12.841334730Z [err]    code: 'MODULE_NOT_FOUND',
+2026-05-01T06:31:12.841337841Z [err]    requireStack: []
+2026-05-01T06:31:12.841341781Z [err]  }
+2026-05-01T06:31:12.841344813Z [err]  
+2026-05-01T06:32:43.021625105Z [err]      at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+2026-05-01T06:32:43.021652159Z [err]  npm warn config production Use `--omit=dev` instead.
+2026-05-01T06:32:43.021657201Z [inf]  
+2026-05-01T06:32:43.021662408Z [inf]  > start
+2026-05-01T06:32:43.021666852Z [inf]  > cd backend && npm run start:prod
+2026-05-01T06:32:43.021673902Z [inf]  
+2026-05-01T06:32:43.021678829Z [err]  npm warn config production Use `--omit=dev` instead.
+2026-05-01T06:32:43.021684957Z [inf]  
+2026-05-01T06:32:43.021689541Z [inf]  > team-task-manager-backend@0.1.0 start:prod
+2026-05-01T06:32:43.021695297Z [inf]  > prisma migrate deploy && node dist/server.js
+2026-05-01T06:32:43.021700783Z [inf]  
+2026-05-01T06:32:43.021705503Z [inf]  Prisma schema loaded from prisma/schema.prisma
+2026-05-01T06:32:43.021710002Z [inf]  Datasource "db": PostgreSQL database "railway", schema "public" at "postgres.railway.internal:5432"
+2026-05-01T06:32:43.021715020Z [inf]  
+2026-05-01T06:32:43.021719240Z [inf]  2 migrations found in prisma/migrations
+2026-05-01T06:32:43.021723231Z [inf]  
+2026-05-01T06:32:43.021728203Z [inf]  
+2026-05-01T06:32:43.021732550Z [inf]  No pending migrations to apply.
+2026-05-01T06:32:43.021737380Z [err]  node:internal/modules/cjs/loader:1386
+2026-05-01T06:32:43.021743025Z [err]    throw err;
+2026-05-01T06:32:43.021747288Z [err]    ^
+2026-05-01T06:32:43.021751628Z [err]  
+2026-05-01T06:32:43.021760766Z [err]      at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+2026-05-01T06:32:43.021765274Z [err]      at defaultResolveImpl (node:internal/modules/cjs/loader:1025:19)
+2026-05-01T06:32:43.023240882Z [err]      at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+2026-05-01T06:32:43.023240985Z [err]  npm error command failed
+2026-05-01T06:32:43.023242134Z [inf]  > prisma migrate deploy && node dist/server.js
+2026-05-01T06:32:43.023246889Z [err]  npm error command sh -c prisma migrate deploy && node dist/server.js
+2026-05-01T06:32:43.023249953Z [inf]  
+2026-05-01T06:32:43.023251893Z [err]      at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)
+2026-05-01T06:32:43.023252308Z [err]  npm warn config production Use `--omit=dev` instead.
+2026-05-01T06:32:43.023259651Z [inf]  
+2026-05-01T06:32:43.023261473Z [err]      at node:internal/main/run_main_module:36:49 {
+2026-05-01T06:32:43.023266461Z [inf]  Datasource "db": PostgreSQL database "railway", schema "public" at "postgres.railway.internal:5432"
+2026-05-01T06:32:43.023267957Z [inf]  > start
+2026-05-01T06:32:43.023270046Z [err]    code: 'MODULE_NOT_FOUND',
+2026-05-01T06:32:43.023273662Z [inf]  > cd backend && npm run start:prod
+2026-05-01T06:32:43.023279374Z [inf]  
+2026-05-01T06:32:43.023286124Z [err]  npm warn config production Use `--omit=dev` instead.
+2026-05-01T06:32:43.023287660Z [err]  }
+2026-05-01T06:32:43.023292208Z [inf]  
+2026-05-01T06:32:43.023296254Z [err]  
+2026-05-01T06:32:43.023297679Z [inf]  > team-task-manager-backend@0.1.0 start:prod
+2026-05-01T06:32:43.023301624Z [err]  Node.js v22.22.2
+2026-05-01T06:32:43.023307214Z [err]  npm error Lifecycle script `start:prod` failed with error:
+2026-05-01T06:32:43.023311500Z [err]  npm error code 1
+2026-05-01T06:32:43.023315887Z [err]  npm error path /app/backend
+2026-05-01T06:32:43.023321023Z [err]  npm error workspace team-task-manager-backend@0.1.0
+2026-05-01T06:32:43.023324909Z [err]  npm error location /app/backend
+2026-05-01T06:32:43.025049341Z [inf]  
+2026-05-01T06:32:43.025054893Z [inf]  2 migrations found in prisma/migrations
+2026-05-01T06:32:43.025057042Z [err]      at Function._load (node:internal/modules/cjs/loader:1192:37)
+2026-05-01T06:32:43.025060021Z [inf]  
+2026-05-01T06:32:43.025063947Z [inf]  
+2026-05-01T06:32:43.025067853Z [err]      at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+2026-05-01T06:32:43.025069222Z [inf]  No pending migrations to apply.
+2026-05-01T06:32:43.025073952Z [err]      at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+2026-05-01T06:32:43.025074816Z [err]  node:internal/modules/cjs/loader:1386
+2026-05-01T06:32:43.025079556Z [err]      at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)
+2026-05-01T06:32:43.025081529Z [err]    throw err;
+2026-05-01T06:32:43.025091036Z [err]    code: 'MODULE_NOT_FOUND',
+2026-05-01T06:32:43.025095394Z [err]  
+2026-05-01T06:32:43.025098279Z [err]    requireStack: []
+2026-05-01T06:32:43.025100913Z [err]  Error: Cannot find module '/app/backend/dist/server.js'
+2026-05-01T06:32:43.025104624Z [err]  }
+2026-05-01T06:32:43.025106512Z [err]      at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+2026-05-01T06:32:43.025110744Z [err]  
+2026-05-01T06:32:43.025112491Z [err]      at defaultResolveImpl (node:internal/modules/cjs/loader:1025:19)
+2026-05-01T06:32:43.025116125Z [err]      at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1030:22)
+2026-05-01T06:32:43.025166671Z [err]  Node.js v22.22.2
+2026-05-01T06:32:43.025171270Z [err]  npm error Lifecycle script `start:prod` failed with error:
+2026-05-01T06:32:43.025182233Z [err]  npm error path /app/backend
+2026-05-01T06:32:43.026800746Z [err]  npm error workspace team-task-manager-backend@0.1.0
+2026-05-01T06:32:43.026808604Z [err]  npm error command failed
+2026-05-01T06:32:43.026816068Z [err]  npm warn config production Use `--omit=dev` instead.
+2026-05-01T06:32:43.026824290Z [inf]  > start
+2026-05-01T06:32:43.026828644Z [inf]  > cd backend && npm run start:prod
+2026-05-01T06:32:43.026832114Z [inf]  
+2026-05-01T06:32:43.026837070Z [inf]  No pending migrations to apply.
+2026-05-01T06:32:43.026837213Z [err]  npm warn config production Use `--omit=dev` instead.
+2026-05-01T06:32:43.026853907Z [err]    throw err;
+2026-05-01T06:32:43.026854268Z [inf]  > prisma migrate deploy && node dist/server.js
+2026-05-01T06:32:43.026861737Z [inf]  
+2026-05-01T06:32:43.026862317Z [err]    ^
+2026-05-01T06:32:43.026866056Z [inf]  Prisma schema loaded from prisma/schema.prisma
+2026-05-01T06:32:43.026870132Z [err]  
+2026-05-01T06:32:43.026871019Z [inf]  Datasource "db": PostgreSQL database "railway", schema "public" at "postgres.railway.internal:5432"
+2026-05-01T06:32:43.026878224Z [err]  Error: Cannot find module '/app/backend/dist/server.js'
+2026-05-01T06:32:43.026880437Z [inf]  2 migrations found in prisma/migrations
+2026-05-01T06:32:43.028336477Z [err]  npm error command sh -c prisma migrate deploy && node dist/server.js
+2026-05-01T06:32:43.028341422Z [err]  npm warn config production Use `--omit=dev` instead.
+2026-05-01T06:32:43.028347700Z [inf]  
+2026-05-01T06:32:43.028350003Z [err]      at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1030:22)
+2026-05-01T06:32:43.028353839Z [inf]  > start
+2026-05-01T06:32:43.028358784Z [inf]  
+2026-05-01T06:32:43.028359879Z [inf]  > cd backend && npm run start:prod
+2026-05-01T06:32:43.028362925Z [err]      at Function._load (node:internal/modules/cjs/loader:1192:37)
+2026-05-01T06:32:43.028368153Z [inf]  
+2026-05-01T06:32:43.028375468Z [err]      at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+2026-05-01T06:32:43.028380770Z [err]      at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)
+2026-05-01T06:32:43.028385404Z [err]      at node:internal/main/run_main_module:36:49 {
+2026-05-01T06:32:43.028390034Z [err]    code: 'MODULE_NOT_FOUND',
+2026-05-01T06:32:43.028394812Z [err]    requireStack: []
+2026-05-01T06:32:43.028398786Z [err]  }
+2026-05-01T06:32:43.028402757Z [err]  
+2026-05-01T06:32:43.028406009Z [err]  Node.js v22.22.2
+2026-05-01T06:32:43.028409728Z [err]  npm error Lifecycle script `start:prod` failed with error:
+2026-05-01T06:32:43.028413233Z [err]  npm error code 1
+2026-05-01T06:32:43.028427335Z [err]  npm error location /app/backend
+2026-05-01T06:32:43.028430398Z [err]  npm error command failed
+2026-05-01T06:32:43.029787928Z [inf]  > prisma migrate deploy && node dist/server.js
+2026-05-01T06:32:43.029798249Z [inf]  Prisma schema loaded from prisma/schema.prisma
+2026-05-01T06:32:43.029801741Z [inf]  Datasource "db": PostgreSQL database "railway", schema "public" at "postgres.railway.internal:5432"
+2026-05-01T06:32:43.029819114Z [inf]  No pending migrations to apply.
+2026-05-01T06:32:43.029823077Z [err]  node:internal/modules/cjs/loader:1386
+2026-05-01T06:32:43.029827165Z [err]    throw err;
+2026-05-01T06:32:43.029830528Z [err]    ^
+2026-05-01T06:32:43.029837232Z [err]  Error: Cannot find module '/app/backend/dist/server.js'
+2026-05-01T06:32:43.029844349Z [err]      at defaultResolveImpl (node:internal/modules/cjs/loader:1025:19)
+2026-05-01T06:32:43.029855372Z [err]      at Function._load (node:internal/modules/cjs/loader:1192:37)
+2026-05-01T06:32:43.029859697Z [err]      at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+2026-05-01T06:32:43.029868838Z [err]      at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)
+2026-05-01T06:32:43.029873349Z [err]      at node:internal/main/run_main_module:36:49 {
+2026-05-01T06:32:43.029877036Z [err]    code: 'MODULE_NOT_FOUND',
+2026-05-01T06:32:43.029881083Z [err]    requireStack: []
+2026-05-01T06:32:43.029885247Z [err]  }
+2026-05-01T06:32:43.031652562Z [inf]  
+2026-05-01T06:32:43.031657263Z [err]  
+2026-05-01T06:32:43.031660333Z [inf]  
+2026-05-01T06:32:43.031662939Z [err]  Node.js v22.22.2
+2026-05-01T06:32:43.031668166Z [err]  npm error Lifecycle script `start:prod` failed with error:
+2026-05-01T06:32:43.031674270Z [err]  npm error code 1
+2026-05-01T06:32:43.031679904Z [err]  npm error path /app/backend
+2026-05-01T06:32:43.031682934Z [err]  npm error workspace team-task-manager-backend@0.1.0
+2026-05-01T06:32:43.031686107Z [err]  npm error location /app/backend
+2026-05-01T06:32:43.031689239Z [err]  npm error command failed
+2026-05-01T06:32:43.031692153Z [err]  npm error command sh -c prisma migrate deploy && node dist/server.js
+2026-05-01T06:32:43.031695075Z [err]  npm warn config production Use `--omit=dev` instead.
+2026-05-01T06:32:43.031701310Z [inf]  > start
+2026-05-01T06:32:43.031707545Z [inf]  
+2026-05-01T06:32:43.031710328Z [err]  npm warn config production Use `--omit=dev` instead.
+2026-05-01T06:32:43.031716347Z [inf]  > team-task-manager-backend@0.1.0 start:prod
+2026-05-01T06:32:43.031720926Z [inf]  > prisma migrate deploy && node dist/server.js
+2026-05-01T06:32:43.031724174Z [inf]  
+2026-05-01T06:32:43.031726931Z [inf]  Prisma schema loaded from prisma/schema.prisma
+2026-05-01T06:32:43.031729904Z [inf]  Datasource "db": PostgreSQL database "railway", schema "public" at "postgres.railway.internal:5432"
+2026-05-01T06:32:43.031732962Z [inf]  
+2026-05-01T06:32:43.031736119Z [inf]  2 migrations found in prisma/migrations
+2026-05-01T06:32:43.033095079Z [err]  npm error Lifecycle script `start:prod` failed with error:
+2026-05-01T06:32:43.033097994Z [err]    ^
+2026-05-01T06:32:43.033101275Z [err]  npm error code 1
+2026-05-01T06:32:43.033104898Z [err]  
+2026-05-01T06:32:43.033107341Z [err]  npm error path /app/backend
+2026-05-01T06:32:43.033110577Z [err]  Error: Cannot find module '/app/backend/dist/server.js'
+2026-05-01T06:32:43.033112824Z [err]  npm error workspace team-task-manager-backend@0.1.0
+2026-05-01T06:32:43.033116730Z [err]      at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+2026-05-01T06:32:43.033118792Z [err]  npm error location /app/backend
+2026-05-01T06:32:43.033121613Z [err]      at defaultResolveImpl (node:internal/modules/cjs/loader:1025:19)
+2026-05-01T06:32:43.033125310Z [err]  npm error command failed
+2026-05-01T06:32:43.033127139Z [err]      at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1030:22)
+2026-05-01T06:32:43.033130545Z [err]  npm error command sh -c prisma migrate deploy && node dist/server.js
+2026-05-01T06:32:43.033132969Z [err]      at Function._load (node:internal/modules/cjs/loader:1192:37)
+2026-05-01T06:32:43.033138117Z [err]      at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+2026-05-01T06:32:43.033149694Z [err]    code: 'MODULE_NOT_FOUND',
+2026-05-01T06:32:43.033155335Z [err]  }
+2026-05-01T06:32:43.033158288Z [err]  
+2026-05-01T06:32:43.033161127Z [err]  Node.js v22.22.2
+2026-05-01T06:32:43.035053576Z [err]    ^
+2026-05-01T06:32:43.035059902Z [err]  
+2026-05-01T06:32:43.035064797Z [err]  Error: Cannot find module '/app/backend/dist/server.js'
+2026-05-01T06:32:43.035079956Z [inf]  > start
+2026-05-01T06:32:43.035079964Z [err]      at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+2026-05-01T06:32:43.035083806Z [inf]  > cd backend && npm run start:prod
+2026-05-01T06:32:43.035087538Z [err]      at defaultResolveImpl (node:internal/modules/cjs/loader:1025:19)
+2026-05-01T06:32:43.035089176Z [inf]  
+2026-05-01T06:32:43.035092755Z [err]      at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1030:22)
+2026-05-01T06:32:43.035095118Z [err]  npm warn config production Use `--omit=dev` instead.
+2026-05-01T06:32:43.035098018Z [err]      at Function._load (node:internal/modules/cjs/loader:1192:37)
+2026-05-01T06:32:43.035100683Z [inf]  
+2026-05-01T06:32:43.035102992Z [err]      at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+2026-05-01T06:32:43.035105998Z [inf]  > team-task-manager-backend@0.1.0 start:prod
+2026-05-01T06:32:43.035111672Z [inf]  > prisma migrate deploy && node dist/server.js
+2026-05-01T06:32:43.035119256Z [inf]  Prisma schema loaded from prisma/schema.prisma
+2026-05-01T06:32:43.035123059Z [inf]  Datasource "db": PostgreSQL database "railway", schema "public" at "postgres.railway.internal:5432"
+2026-05-01T06:32:43.035139859Z [inf]  
+2026-05-01T06:32:43.035143358Z [inf]  No pending migrations to apply.
+2026-05-01T06:32:43.035146813Z [err]  node:internal/modules/cjs/loader:1386
+2026-05-01T06:32:43.037138400Z [inf]  Datasource "db": PostgreSQL database "railway", schema "public" at "postgres.railway.internal:5432"
+2026-05-01T06:32:43.037146153Z [inf]  
+2026-05-01T06:32:43.037149418Z [err]      at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)
+2026-05-01T06:32:43.037155434Z [err]      at node:internal/main/run_main_module:36:49 {
+2026-05-01T06:32:43.037161551Z [err]    code: 'MODULE_NOT_FOUND',
+2026-05-01T06:32:43.037168719Z [err]  }
+2026-05-01T06:32:43.037172485Z [err]  
+2026-05-01T06:32:43.037175256Z [err]  Node.js v22.22.2
+2026-05-01T06:32:43.037177884Z [err]  npm error Lifecycle script `start:prod` failed with error:
+2026-05-01T06:32:43.037180828Z [err]  npm error code 1
+2026-05-01T06:32:43.037183459Z [err]  npm error path /app/backend
+2026-05-01T06:32:43.037186089Z [err]  npm error workspace team-task-manager-backend@0.1.0
+2026-05-01T06:32:43.037189365Z [err]  npm error location /app/backend
+2026-05-01T06:32:43.037195078Z [err]  npm error command sh -c prisma migrate deploy && node dist/server.js
+2026-05-01T06:32:43.037197901Z [err]  npm warn config production Use `--omit=dev` instead.
+2026-05-01T06:32:43.037200516Z [inf]  
+2026-05-01T06:32:43.037205833Z [inf]  > cd backend && npm run start:prod
+2026-05-01T06:32:43.037208513Z [inf]  
+2026-05-01T06:32:43.037213035Z [err]  npm warn config production Use `--omit=dev` instead.
+2026-05-01T06:32:43.037218508Z [inf]  > team-task-manager-backend@0.1.0 start:prod
+2026-05-01T06:32:43.037224733Z [inf]  
+2026-05-01T06:32:43.039055431Z [err]  
+2026-05-01T06:32:43.039062822Z [err]  Error: Cannot find module '/app/backend/dist/server.js'
+2026-05-01T06:32:43.039065435Z [err]  npm error workspace team-task-manager-backend@0.1.0
+2026-05-01T06:32:43.039070445Z [err]      at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+2026-05-01T06:32:43.039071512Z [inf]  2 migrations found in prisma/migrations
+2026-05-01T06:32:43.039075788Z [err]      at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1030:22)
+2026-05-01T06:32:43.039076580Z [err]      at defaultResolveImpl (node:internal/modules/cjs/loader:1025:19)
+2026-05-01T06:32:43.039079583Z [inf]  
+2026-05-01T06:32:43.039081468Z [err]      at Function._load (node:internal/modules/cjs/loader:1192:37)
+2026-05-01T06:32:43.039084801Z [inf]  
+2026-05-01T06:32:43.039088420Z [err]      at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+2026-05-01T06:32:43.039097858Z [err]  node:internal/modules/cjs/loader:1386
+2026-05-01T06:32:43.039104006Z [err]    throw err;
+2026-05-01T06:32:43.039104172Z [err]      at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)
+2026-05-01T06:32:43.039110495Z [err]      at node:internal/main/run_main_module:36:49 {
+2026-05-01T06:32:43.039111177Z [err]    ^
+2026-05-01T06:32:43.039114281Z [err]  npm error Lifecycle script `start:prod` failed with error:
+2026-05-01T06:32:43.039122694Z [err]  npm error path /app/backend
+2026-05-01T06:32:43.039136374Z [err]    requireStack: []
+2026-05-01T06:32:43.040686255Z [err]  npm error location /app/backend
+2026-05-01T06:32:43.040700710Z [err]  npm error command failed
+2026-05-01T06:32:43.040704951Z [err]  npm error command sh -c prisma migrate deploy && node dist/server.js
+2026-05-01T06:32:43.040708906Z [err]  npm warn config production Use `--omit=dev` instead.
+2026-05-01T06:32:43.040716857Z [inf]  > start
+2026-05-01T06:32:43.040720383Z [inf]  > cd backend && npm run start:prod
+2026-05-01T06:32:43.040723693Z [inf]  
+2026-05-01T06:32:43.040728168Z [err]  npm warn config production Use `--omit=dev` instead.
+2026-05-01T06:32:43.040731646Z [inf]  
+2026-05-01T06:32:43.040736589Z [inf]  > team-task-manager-backend@0.1.0 start:prod
+2026-05-01T06:32:43.040739942Z [inf]  > prisma migrate deploy && node dist/server.js
+2026-05-01T06:32:43.040743849Z [inf]  
+2026-05-01T06:32:43.247661008Z [inf]  Datasource "db": PostgreSQL database "railway", schema "public" at "postgres.railway.internal:5432"
+2026-05-01T06:32:43.309928847Z [inf]  2 migrations found in prisma/migrations
+2026-05-01T06:32:43.362656488Z [inf]  
+2026-05-01T06:32:43.362659554Z [inf]  No pending migrations to apply.
+2026-05-01T06:32:43.408117516Z [err]  node:internal/modules/cjs/loader:1386
+2026-05-01T06:32:43.408123004Z [err]    throw err;
+2026-05-01T06:32:43.408126215Z [err]    ^
+2026-05-01T06:32:43.408129475Z [err]  
+2026-05-01T06:32:43.408132716Z [err]  Error: Cannot find module '/app/backend/dist/server.js'
+2026-05-01T06:32:43.408135936Z [err]      at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+2026-05-01T06:32:43.408139607Z [err]      at defaultResolveImpl (node:internal/modules/cjs/loader:1025:19)
+2026-05-01T06:32:43.408145703Z [err]      at Function._load (node:internal/modules/cjs/loader:1192:37)
+2026-05-01T06:32:43.408148322Z [err]      at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+2026-05-01T06:32:43.408151380Z [err]      at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+2026-05-01T06:32:43.408162257Z [err]      at node:internal/main/run_main_module:36:49 {
+2026-05-01T06:32:43.408165076Z [err]    code: 'MODULE_NOT_FOUND',
+2026-05-01T06:32:43.408167901Z [err]    requireStack: []
+2026-05-01T06:32:43.408170690Z [err]  }
+2026-05-01T06:32:43.408174154Z [err]  
+2026-05-01T06:32:43.408177107Z [err]  Node.js v22.22.2
+2026-05-01T06:32:43.408179861Z [err]  npm error Lifecycle script `start:prod` failed with error:
+2026-05-01T06:32:43.408182706Z [err]  npm error code 1
+2026-05-01T06:32:43.408185256Z [err]  npm error path /app/backend
+2026-05-01T06:32:43.408188134Z [err]  npm error workspace team-task-manager-backend@0.1.0
+2026-05-01T06:32:44.184382879Z [err]  npm warn config production Use `--omit=dev` instead.
+2026-05-01T06:32:44.186555293Z [inf]  
+2026-05-01T06:32:44.291704155Z [err]  npm warn config production Use `--omit=dev` instead.
+2026-05-01T06:32:44.291712518Z [inf]  > team-task-manager-backend@0.1.0 start:prod
+2026-05-01T06:32:44.291716191Z [inf]  > prisma migrate deploy && node dist/server.js
+2026-05-01T06:32:44.291720087Z [inf]  
+2026-05-01T06:32:44.575066841Z [inf]  Prisma schema loaded from prisma/schema.prisma
+2026-05-01T06:32:44.577048095Z [inf]  Datasource "db": PostgreSQL database "railway", schema "public" at "postgres.railway.internal:5432"
+2026-05-01T06:32:44.990388614Z [err]  npm error path /app/backend
+2026-05-01T06:32:44.990412692Z [inf]  
+2026-05-01T06:32:44.990416451Z [inf]  2 migrations found in prisma/migrations
+2026-05-01T06:32:44.990422760Z [inf]  
+2026-05-01T06:32:44.990426186Z [inf]  No pending migrations to apply.
+2026-05-01T06:32:44.990429786Z [err]  node:internal/modules/cjs/loader:1386
+2026-05-01T06:32:44.990435731Z [err]    throw err;
+2026-05-01T06:32:44.990439744Z [err]    ^
+2026-05-01T06:32:44.990443285Z [err]  
+2026-05-01T06:32:44.990446609Z [err]  Error: Cannot find module '/app/backend/dist/server.js'
+2026-05-01T06:32:44.990450034Z [err]      at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+2026-05-01T06:32:44.990453478Z [err]      at defaultResolveImpl (node:internal/modules/cjs/loader:1025:19)
+2026-05-01T06:32:44.990456815Z [err]      at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1030:22)
+2026-05-01T06:32:44.990460318Z [err]      at Function._load (node:internal/modules/cjs/loader:1192:37)
+2026-05-01T06:32:44.990463366Z [err]      at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+2026-05-01T06:32:44.990466614Z [err]      at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+2026-05-01T06:32:44.990470699Z [err]      at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)
+2026-05-01T06:32:44.990473504Z [err]      at node:internal/main/run_main_module:36:49 {
+2026-05-01T06:32:44.990476355Z [err]    code: 'MODULE_NOT_FOUND',
+2026-05-01T06:32:44.990479324Z [err]    requireStack: []
+2026-05-01T06:32:44.990482416Z [err]  }
+2026-05-01T06:32:44.990485292Z [err]  
+2026-05-01T06:32:44.990488342Z [err]  Node.js v22.22.2
+2026-05-01T06:32:44.990491151Z [err]  npm error Lifecycle script `start:prod` failed with error:
+2026-05-01T06:32:44.992574900Z [err]  npm error workspace team-task-manager-backend@0.1.0
+2026-05-01T06:32:44.992579110Z [err]  npm error location /app/backend
+2026-05-01T06:32:44.992582340Z [err]  npm error command failed
+2026-05-01T06:32:44.992585569Z [err]  npm error command sh -c prisma migrate deploy && node dist/server.js
+2026-05-01T06:32:45.472690783Z [err]  npm warn config production Use `--omit=dev` instead.
+2026-05-01T06:32:45.482830353Z [inf]  
+2026-05-01T06:32:45.482834451Z [inf]  > start
+2026-05-01T06:32:45.482837470Z [inf]  > cd backend && npm run start:prod
+2026-05-01T06:32:45.482841525Z [inf]  
+2026-05-01T06:32:45.582545661Z [inf]  
+2026-05-01T06:32:45.582602095Z [err]  npm warn config production Use `--omit=dev` instead.
+2026-05-01T06:32:45.582607875Z [inf]  
+2026-05-01T06:32:45.582613636Z [inf]  > team-task-manager-backend@0.1.0 start:prod
+2026-05-01T06:32:45.582618853Z [inf]  > prisma migrate deploy && node dist/server.js
+2026-05-01T06:32:45.985007307Z [inf]  
+2026-05-01T06:32:45.985020339Z [inf]  Datasource "db": PostgreSQL database "railway", schema "public" at "postgres.railway.internal:5432"
+2026-05-01T06:32:45.985024684Z [inf]  
+2026-05-01T06:32:45.985028785Z [inf]  2 migrations found in prisma/migrations
+2026-05-01T06:32:45.985067348Z [inf]  Prisma schema loaded from prisma/schema.prisma
+2026-05-01T06:32:45.992043676Z [inf]  
+2026-05-01T06:32:45.992047216Z [inf]  No pending migrations to apply.
+2026-05-01T06:32:46.030898572Z [err]    code: 'MODULE_NOT_FOUND',
+2026-05-01T06:32:46.030898989Z [err]  }
+2026-05-01T06:32:46.030900346Z [err]    ^
+2026-05-01T06:32:46.030907537Z [err]    requireStack: []
+2026-05-01T06:32:46.030909921Z [err]  
+2026-05-01T06:32:46.030910569Z [err]  
+2026-05-01T06:32:46.030915718Z [err]  Node.js v22.22.2
+2026-05-01T06:32:46.030918127Z [err]  Error: Cannot find module '/app/backend/dist/server.js'
+2026-05-01T06:32:46.030923484Z [err]      at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+2026-05-01T06:32:46.030929740Z [err]      at defaultResolveImpl (node:internal/modules/cjs/loader:1025:19)
+2026-05-01T06:32:46.030930797Z [err]      at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+2026-05-01T06:32:46.030935367Z [err]      at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1030:22)
+2026-05-01T06:32:46.030941404Z [err]      at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+2026-05-01T06:32:46.030942267Z [err]      at Function._load (node:internal/modules/cjs/loader:1192:37)
+2026-05-01T06:32:46.030947128Z [err]      at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)
+2026-05-01T06:32:46.030950933Z [err]      at node:internal/main/run_main_module:36:49 {
+2026-05-01T06:32:46.030973872Z [err]  node:internal/modules/cjs/loader:1386
+2026-05-01T06:32:46.030976984Z [err]    throw err;
+2026-05-01T06:32:46.037430588Z [err]  npm error Lifecycle script `start:prod` failed with error:
+2026-05-01T06:32:46.037435139Z [err]  npm error code 1
+2026-05-01T06:32:46.037438723Z [err]  npm error path /app/backend
+2026-05-01T06:32:46.037441850Z [err]  npm error workspace team-task-manager-backend@0.1.0
+2026-05-01T06:32:46.037444862Z [err]  npm error location /app/backend
+2026-05-01T06:32:46.037447591Z [err]  npm error command failed
+2026-05-01T06:32:46.037450547Z [err]  npm error command sh -c prisma migrate deploy && node dist/server.js
+2026-05-01T06:32:47.000830843Z [err]  npm warn config production Use `--omit=dev` instead.
+2026-05-01T06:32:47.000835044Z [inf]  
+2026-05-01T06:32:47.000838595Z [inf]  > start
+2026-05-01T06:32:47.000841849Z [inf]  > cd backend && npm run start:prod
+2026-05-01T06:32:47.000845283Z [inf]  
+2026-05-01T06:32:47.000852354Z [inf]  
+2026-05-01T06:32:47.000859680Z [inf]  > prisma migrate deploy && node dist/server.js
+2026-05-01T06:32:47.000863648Z [inf]  
+2026-05-01T06:32:47.162909125Z [inf]  Prisma schema loaded from prisma/schema.prisma
+2026-05-01T06:32:47.162913569Z [inf]  Datasource "db": PostgreSQL database "railway", schema "public" at "postgres.railway.internal:5432"
+2026-05-01T06:32:47.273061579Z [inf]  
+2026-05-01T06:32:47.292867798Z [inf]  No pending migrations to apply.
+2026-05-01T06:32:47.337475689Z [err]  node:internal/modules/cjs/loader:1386
+2026-05-01T06:32:47.337486609Z [err]    ^
+2026-05-01T06:32:47.337490340Z [err]  
+2026-05-01T06:32:47.337494981Z [err]  Error: Cannot find module '/app/backend/dist/server.js'
+2026-05-01T06:32:47.337499276Z [err]      at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+2026-05-01T06:32:47.337502463Z [err]      at defaultResolveImpl (node:internal/modules/cjs/loader:1025:19)
+2026-05-01T06:32:47.337505706Z [err]      at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1030:22)
+2026-05-01T06:32:47.337509550Z [err]      at Function._load (node:internal/modules/cjs/loader:1192:37)
+2026-05-01T06:32:47.337513040Z [err]      at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+2026-05-01T06:32:47.337516619Z [err]      at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+2026-05-01T06:32:47.337520382Z [err]      at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)
+2026-05-01T06:32:47.337524086Z [err]      at node:internal/main/run_main_module:36:49 {
+2026-05-01T06:32:47.337527227Z [err]    code: 'MODULE_NOT_FOUND',
+2026-05-01T06:32:47.337530948Z [err]    requireStack: []
+2026-05-01T06:32:47.337534602Z [err]  }
+2026-05-01T06:32:47.337538231Z [err]  
+2026-05-01T06:32:47.339318981Z [err]  npm error Lifecycle script `start:prod` failed with error:
+2026-05-01T06:32:47.339325861Z [err]  npm error code 1
+2026-05-01T06:32:47.339329916Z [err]  npm error path /app/backend
+2026-05-01T06:32:47.339333803Z [err]  npm error workspace team-task-manager-backend@0.1.0
+2026-05-01T06:32:47.339337554Z [err]  npm error location /app/backend
+2026-05-01T06:32:47.339341728Z [err]  npm error command failed
