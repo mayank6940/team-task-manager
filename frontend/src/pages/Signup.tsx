@@ -6,6 +6,7 @@ export default function Signup() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [error, setError] = useState<string | null>(null)
   const [showPassword, setShowPassword] = useState(false)
   const navigate = useNavigate()
 
