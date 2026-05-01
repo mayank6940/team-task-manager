@@ -4,8 +4,9 @@ Backend (Railway)
 
 - Create a Railway project and add the PostgreSQL plugin.
 - Set environment variables in Railway: `DATABASE_URL`, `JWT_SECRET`, `PORT`.
-- The repo contains a `Procfile` which runs `npx prisma migrate deploy && node src/server.js`.
-- Railway will detect the Node app; ensure the build command runs `npm install` and `npx prisma generate` if needed.
+- Deploy from the repo root. The root `package.json` now exposes the backend workspace to Railway.
+- Railway should use the root scripts: `npm run build` and `npm start`.
+- The backend build step runs `prisma generate` before TypeScript compilation, and startup runs `prisma migrate deploy` before launching the server.
 - After deployment, run any required seed scripts and verify the `/health` endpoint.
 
 Frontend (Vercel / Railway static)
@@ -16,5 +17,5 @@ Frontend (Vercel / Railway static)
 
 Notes
 
-- On Railway, the `Procfile` ensures migrations run on startup. If you prefer manual control, run `npx prisma migrate deploy` from the Railway console instead.
+- If you need to run migrations manually on Railway, use `npx prisma migrate deploy` from the Railway console.
 - Keep `JWT_SECRET` strong in production.

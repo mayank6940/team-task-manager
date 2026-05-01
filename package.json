@@ -1,0 +1,11 @@
+{
+  "name": "team-task-manager",
+  "private": true,
+  "workspaces": [
+    "backend"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace backend",
+    "start": "npm run start:prod --workspace backend"
+  }
+}
