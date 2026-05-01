@@ -6,7 +6,7 @@ Key Features:
 - Admin Panel: Full control over project creation, member assignment, and task deletion.
 - Member Panel: Clean, private workspace where members only see tasks assigned specifically to them.
 - Real-time Feed: Activity logs that track task creation, status updates, and project milestones.
-- Premium Design: Minimalist, monochromatic UI inspired by modern design standards (Apple-style).
+- Premium Design: Minimalist, monochromatic UI inspired by modern design standards.
 - Mobile Responsive: Fully optimized for all screen sizes.
 - Security: JWT-based authentication and role-based access control.
 
@@ -31,7 +31,6 @@ How to run locally:
    - Set up your .env with VITE_API_URL
    - Run 'npm run dev'
 
-Developer Notes:
-I've focused heavily on making the UI feel premium and not like a standard template. The task privacy logic ensures that members aren't overwhelmed with other people's tasks, while admins maintain full oversight.
+
 
 GitHub Repo: https://github.com/mayank6940/team-task-manager
