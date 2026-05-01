@@ -18,21 +18,30 @@ export default function CreateProjectModal({ open, onClose, onCreate, initial }:
   if (!open) return null
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
-      <div className="absolute inset-0 bg-black/40" onClick={onClose}></div>
-      <div className="bg-[#fbf6f1] rounded-lg shadow-lg z-50 w-full max-w-lg p-6 border border-gray-200">
-        <h3 className="text-lg font-semibold text-[#3b2b26] mb-2">Create Project</h3>
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose}></div>
+      <div className="relative bg-white w-full max-w-md rounded-[32px] p-8 shadow-2xl animate-slide-up border border-white/10">
+        <h2 className="text-2xl font-black text-gray-900 mb-6">New Project</h2>
         <form onSubmit={submit} className="space-y-4">
-          <input value={name} onChange={e=>setName(e.target.value)} placeholder="Project name" className="input" required />
-          <textarea value={desc} onChange={e=>setDesc(e.target.value)} placeholder="Description" className="input" rows={3}></textarea>
-          <select value={priority} onChange={e=>setPriority(e.target.value)} className="input">
-            <option value="LOW">Low Priority</option>
-            <option value="MEDIUM">Medium Priority</option>
-            <option value="HIGH">High Priority</option>
-          </select>
-          <div className="flex justify-end gap-2">
-            <button type="button" onClick={onClose} className="ghost-btn">Cancel</button>
-            <button type="submit" className="primary-btn">Create</button>
+          <div>
+            <label className="label mb-1 block">Project Name</label>
+            <input required className="input" value={name} onChange={e => setName(e.target.value)} placeholder="Enter project name..." />
+          </div>
+          <div>
+            <label className="label mb-1 block">Description</label>
+            <textarea className="input min-h-[100px]" value={desc} onChange={e => setDesc(e.target.value)} placeholder="What's this project about?" />
+          </div>
+          <div>
+            <label className="label mb-1 block">Priority</label>
+            <select className="input" value={priority} onChange={e => setPriority(e.target.value)}>
+              <option value="LOW">Low</option>
+              <option value="MEDIUM">Medium</option>
+              <option value="HIGH">High</option>
+            </select>
+          </div>
+          <div className="pt-4 flex gap-3">
+            <button type="submit" className="primary-btn flex-1 justify-center">Create Project</button>
+            <button type="button" onClick={onClose} className="btn-secondary">Cancel</button>
           </div>
         </form>
       </div>

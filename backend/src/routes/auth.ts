@@ -60,4 +60,14 @@ router.post(
   }
 )
 
+router.get('/users', async (req: Request, res: Response) => {
+  try {
+    const users = await prisma.user.findMany({ select: { id: true, name: true, email: true, role: true } })
+    return res.json(users)
+  } catch (err) {
+    console.error(err)
+    return res.status(500).json({ message: 'Server error' })
+  }
+})
+
 export default router

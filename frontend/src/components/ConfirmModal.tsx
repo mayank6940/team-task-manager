@@ -1,16 +1,16 @@
 import React from 'react'
 
-export default function ConfirmModal({ open, title, message, onConfirm, onCancel }: any) {
+export default function ConfirmModal({ open, title, message, onConfirm, onClose }: any) {
   if (!open) return null
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
-      <div className="absolute inset-0 bg-black/50" onClick={onCancel}></div>
-      <div className="bg-[#fbf6f1] rounded-lg shadow-lg z-50 w-full max-w-md p-6 border border-gray-200">
-        <h3 className="text-lg font-semibold text-gray-800 mb-2">{title}</h3>
-        <p className="text-sm text-gray-600 mb-4">{message}</p>
-        <div className="flex justify-end gap-2">
-          <button onClick={onCancel} className="small-btn">Cancel</button>
-          <button onClick={onConfirm} className="danger-btn">Delete</button>
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose}></div>
+      <div className="relative bg-white w-full max-w-sm rounded-[32px] p-8 shadow-2xl animate-slide-up border border-white/10">
+        <h2 className="text-xl font-black text-gray-900 mb-2">{title}</h2>
+        <p className="text-sm text-gray-500 mb-8 leading-relaxed font-medium">{message}</p>
+        <div className="flex gap-3">
+          <button onClick={onConfirm} className="primary-btn flex-1 justify-center bg-black hover:bg-gray-800">Confirm</button>
+          <button onClick={onClose} className="btn-secondary flex-1 justify-center">Cancel</button>
         </div>
       </div>
     </div>

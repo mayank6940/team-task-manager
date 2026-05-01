@@ -1,169 +1,241 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import Navbar from '../components/Navbar'
-import api from '../api'
+import axios from 'axios'
 import { useAuth } from '../context/AuthContext'
+import Navbar from '../components/Navbar'
 import TaskCard from '../components/TaskCard'
 import ConfirmModal from '../components/ConfirmModal'
 
-type Task = any
-
 export default function Project() {
   const { id } = useParams()
-  const { user } = useAuth() as any
+  const { token, user } = useAuth() as any
   const [project, setProject] = useState<any>(null)
-  const [tasks, setTasks] = useState<Task[]>([])
   const [members, setMembers] = useState<any[]>([])
-  const [emailToAdd, setEmailToAdd] = useState('')
-  const [newTaskTitle, setNewTaskTitle] = useState('')
-  const [newTaskDueDate, setNewTaskDueDate] = useState('')
-
-  useEffect(() => {
-    if (!id) return
-    const load = async () => {
-      const res = await api.get(`/api/projects/${id}`)
+  const [tasks, setTasks] = useState<any[]>([])
+  const [showCreate, setShowCreate] = useState(false)
+  const [newTask, setNewTask] = useState({ title: '', description: '', dueDate: '', priority: 'MEDIUM', assignedTo: '' })
+  const [allUsers, setAllUsers] = useState<any[]>([])
+  
+  const loadProject = async () => {
+    try {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL || ''}/api/projects/${id}`, { headers: { Authorization: `Bearer ${token}` } })
       setProject(res.data.project)
-      setMembers(res.data.members || [])
-      setTasks(res.data.tasks || [])
+      setMembers(res.data.members)
+      setTasks(res.data.tasks)
+    } catch (err) {
+      console.error(err)
     }
-    load().catch(console.error)
+  }
+
+  const loadAllUsers = async () => {
+    try {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL || ''}/api/auth/users`, { headers: { Authorization: `Bearer ${token}` } })
+      setAllUsers(res.data.filter((u: any) => u.role !== 'ADMIN'))
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  useEffect(() => { 
+    loadProject()
+    loadAllUsers()
   }, [id])
 
-  const addMember = async () => {
+  const handleCreateTask = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!newTask.title || !newTask.dueDate || !newTask.assignedTo) {
+      return alert('Please select a member and a due date for this task.')
+    }
     try {
-      await api.post(`/api/projects/${id}/members`, { email: emailToAdd })
-      setEmailToAdd('')
-      const res = await api.get(`/api/projects/${id}`)
-      setMembers(res.data.members || [])
-    } catch (e: any) {
-      alert(e.response?.data?.message || 'Failed')
+      await axios.post(`${import.meta.env.VITE_API_URL || ''}/api/projects/${id}/tasks`, newTask, { headers: { Authorization: `Bearer ${token}` } })
+      setNewTask({ title: '', description: '', dueDate: '', priority: 'MEDIUM', assignedTo: '' })
+      setShowCreate(false)
+      loadProject()
+    } catch (err) {
+      console.error(err)
     }
   }
 
-  const createTask = async () => {
+  const updateTaskStatus = async (taskId: string, newStatus: string) => {
     try {
-      await api.post(`/api/projects/${id}/tasks`, { title: newTaskTitle, dueDate: newTaskDueDate || null })
-      setNewTaskTitle('')
-      setNewTaskDueDate('')
-      const res = await api.get(`/api/projects/${id}`)
-      setTasks(res.data.tasks || [])
-    } catch (e: any) {
-      alert(e.response?.data?.message || 'Failed')
+      await axios.patch(`${import.meta.env.VITE_API_URL || ''}/api/tasks/${taskId}`, { status: newStatus }, { headers: { Authorization: `Bearer ${token}` } })
+      setTasks(tasks.map(t => t.id === taskId ? { ...t, status: newStatus } : t))
+    } catch (err) {
+      console.error(err)
     }
   }
 
-  const updateTaskStatus = async (taskId: string, status: string) => {
-    try {
-      await api.patch(`/api/tasks/${taskId}`, { status })
-      setTasks((t) => t.map((x: Task) => (x.id === taskId ? { ...x, status } : x)))
-    } catch (e: any) {
-      alert(e.response?.data?.message || 'Failed')
-    }
+
+  // Drag and Drop Handlers
+  const onDragStart = (e: React.DragEvent, taskId: string) => {
+    e.dataTransfer.setData('taskId', taskId)
   }
 
-  const assignTask = async (taskId: string, userId: string | null) => {
-    try {
-      await api.patch(`/api/tasks/${taskId}`, { assignedToId: userId })
-      setTasks((t) => t.map((x: Task) => (x.id === taskId ? { ...x, assignedToId: userId } : x)))
-    } catch (e: any) {
-      alert(e.response?.data?.message || 'Failed')
-    }
+  const onDragOver = (e: React.DragEvent) => {
+    e.preventDefault()
   }
 
-  const [taskToDelete, setTaskToDelete] = useState<string | null>(null)
-
-  const deleteTask = async (taskId: string) => {
-    try {
-      await api.delete(`/api/tasks/${taskId}`)
-      setTasks((t) => t.filter(x => x.id !== taskId))
-    } catch (e: any) {
-      alert(e.response?.data?.message || 'Failed')
-    }
+  const onDrop = (e: React.DragEvent, newStatus: string) => {
+    const taskId = e.dataTransfer.getData('taskId')
+    updateTaskStatus(taskId, newStatus)
   }
 
-  const onRequestDeleteTask = (taskId: string) => {
-    setTaskToDelete(taskId)
+  const getColumnTasks = (status: string) => tasks.filter(t => t.status === status)
+
+  const isUrgent = (date: string) => {
+    if (!date) return false
+    const due = new Date(date).getTime()
+    const now = new Date().getTime()
+    const diff = due - now
+    return diff > 0 && diff < 24 * 60 * 60 * 1000 // due in next 24 hours
   }
 
-  const confirmDeleteTask = async () => {
-    if (!taskToDelete) return
-    await deleteTask(taskToDelete)
-    setTaskToDelete(null)
-  }
-
-  const byStatus = (s: string) => tasks.filter(t => t.status === s)
-
-  if (!project) return <div className="min-h-screen flex items-center justify-center"><div className="text-xl text-gray-600">Loading...</div></div>
+  if (!project) return <div className="min-h-screen flex items-center justify-center"><div className="animate-pulse font-bold text-gray-400">Loading Project...</div></div>
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 transition-colors pb-20">
       <Navbar />
-      <div className="bg-gray-50 border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 py-4">
-          <Link to="/" className="text-blue-600 hover:underline">← Back to Dashboard</Link>
-        </div>
-      </div>
-
-      <div className="w-full px-4 py-8">
-        <h2 className="text-3xl font-bold text-gray-800 mb-2">{project.name}</h2>
-        <p className="text-gray-600 mb-8">{project.description}</p>
-
-        {user?.role === 'ADMIN' && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            <div className="card">
-              <h4 className="font-bold text-gray-800 mb-4">Add Member</h4>
-              <div className="flex gap-2">
-                <input className="input flex-1" value={emailToAdd} onChange={e => setEmailToAdd(e.target.value)} placeholder="member@example.com" />
-                <button onClick={addMember} className="btn">Add</button>
-              </div>
-            </div>
-
-            <div className="card">
-              <h4 className="font-bold text-gray-800 mb-4">Create Task</h4>
-              <div className="space-y-2">
-                <input className="input" value={newTaskTitle} onChange={e => setNewTaskTitle(e.target.value)} placeholder="Task title" />
-                <input className="input" type="date" value={newTaskDueDate} onChange={e => setNewTaskDueDate(e.target.value)} />
-                <button onClick={createTask} className="btn w-full">Create</button>
-              </div>
-            </div>
+      
+      <main className="max-w-7xl mx-auto px-6 py-10 space-y-10">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+          <div className="space-y-4">
+            <Link to="/" className="inline-flex items-center gap-2 text-xs font-bold text-gray-400 hover:text-black transition-colors uppercase tracking-widest">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7"></path></svg>
+              Back to Dashboard
+            </Link>
+            <h1 className="text-4xl sm:text-6xl font-black text-gray-900 tracking-tight leading-none">{project.name}</h1>
+            <p className="text-base sm:text-xl text-gray-500 mt-4 max-w-2xl leading-relaxed font-medium">{project.description}</p>
           </div>
-        )}
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-          {['TODO','IN_PROGRESS','DONE'].map((s) => (
-            <div key={s} className="bg-gray-100 rounded-lg p-4 min-w-0 max-h-screen overflow-y-auto">
-              <h4 className="font-bold text-gray-800 mb-4">{s === 'IN_PROGRESS' ? 'In Progress' : s}</h4>
-              <div className="space-y-3">
-                {byStatus(s).map((t: Task) => (
-                  <TaskCard key={t.id} task={t} members={members} onStatusChange={updateTaskStatus} onAssign={assignTask} onDeleteRequest={onRequestDeleteTask} canAssign={user?.role === 'ADMIN'} />
-                ))}
+          <div className="flex flex-row items-center gap-3">
+            <div className="pill bg-white border border-gray-100 px-4 py-2 whitespace-nowrap">
+              <span className="text-gray-400 mr-2 uppercase tracking-widest font-black text-[10px]">Team Size</span>
+              <span className="font-black text-gray-900">{members.length}</span>
+            </div>
+            {user?.role === 'ADMIN' && (
+              <button onClick={() => setShowCreate(true)} className="primary-btn whitespace-nowrap">
+                Add Task
+              </button>
+            )}
+          </div>
+        </div>
+
+        {/* Kanban Board */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {['TODO', 'IN_PROGRESS', 'DONE'].map((status) => (
+            <div 
+              key={status} 
+              className="space-y-6"
+              onDragOver={onDragOver}
+              onDrop={(e) => onDrop(e, status)}
+            >
+              <div className="flex items-center justify-between px-2">
+                <h3 className="text-xs font-black text-gray-400 uppercase tracking-[0.3em]">
+                  {status.replace('_', ' ')}
+                </h3>
+                <span className="text-[10px] font-black bg-white border border-gray-100 text-gray-400 px-2.5 py-1 rounded-full shadow-sm">
+                  {getColumnTasks(status).length}
+                </span>
+              </div>
+
+              <div className="kanban-column min-h-[500px]">
+                <div className="space-y-4">
+                  {getColumnTasks(status).map((task) => (
+                    <div 
+                      key={task.id} 
+                      draggable 
+                      onDragStart={(e) => onDragStart(e, task.id)}
+                      className="cursor-grab active:cursor-grabbing"
+                    >
+                      <TaskCard 
+                        task={task} 
+                        members={members} 
+                        onUpdate={loadProject} 
+                        urgent={isUrgent(task.dueDate)}
+                      />
+                    </div>
+                  ))}
+                  {getColumnTasks(status).length === 0 && (
+                    <div className="py-10 text-center border-2 border-dashed border-gray-200 rounded-2xl">
+                      <p className="text-xs font-bold text-gray-300 uppercase tracking-widest">Empty</p>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="card">
-          <h4 className="font-bold text-gray-800 mb-4">Team Members</h4>
-          <ul className="space-y-2">
+        {/* Team Roster Section */}
+        <div className="pt-16 border-t border-gray-100">
+          <div className="flex flex-col md:flex-row md:items-center justify-between mb-10 gap-4">
+            <div>
+              <h3 className="text-2xl font-black text-gray-900 tracking-tight">Project Collaborators</h3>
+              <p className="text-sm text-gray-400 mt-1">Users currently participating in this project</p>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {members.map(m => (
-              <div key={m.id} className="flex items-center gap-4 bg-white/5 p-4 rounded-2xl border border-white/10">
-                <div className="avatar h-10 w-10 text-[10px] bg-white/10 text-white border-white/20">{m.name.split(' ').map((s:any)=>s[0]).slice(0,2).join('')}</div>
-                <div className="min-w-0">
-                  <div className="font-bold text-sm truncate">{m.name}</div>
-                  {m.role !== 'ADMIN' ? (
-                    <div className="text-[10px] text-gray-400 truncate uppercase font-bold tracking-tight">{m.email}</div>
-                  ) : (
-                    <div className="text-[10px] text-blue-400 uppercase font-black tracking-widest">Administrator</div>
-                  )}
+              <div key={m.id} className="card group bg-white border border-gray-100 p-4 flex items-center justify-between transition-all">
+                <div className="flex items-center gap-4 min-w-0">
+                  <div className="avatar h-10 w-10 text-xs shadow-sm ring-2 ring-gray-50">{m.user?.name.split(' ').map((s:any)=>s[0]).join('')}</div>
+                  <div className="min-w-0">
+                    <div className="font-bold text-sm text-gray-900 truncate">{m.user?.name}</div>
+                    <div className="text-[10px] font-bold text-black uppercase tracking-widest">{m.user?.role}</div>
+                  </div>
                 </div>
               </div>
             ))}
-          </ul>
+          </div>
         </div>
-      </div>
-      {/* Confirm modal for task deletion */}
-      {taskToDelete && (
-        <ConfirmModal open={!!taskToDelete} title="Delete task" message="Are you sure you want to delete this task? This action cannot be undone." onConfirm={confirmDeleteTask} onCancel={() => setTaskToDelete(null)} />
+      </main>
+
+      {/* Task Creation Modal */}
+      {showCreate && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setShowCreate(false)}></div>
+          <div className="relative bg-white w-full max-w-md rounded-[32px] p-8 shadow-2xl animate-slide-up border border-white/10">
+            <h2 className="text-2xl font-black text-gray-900 mb-6">New Task</h2>
+            <form onSubmit={handleCreateTask} className="space-y-4">
+              <div>
+                <label className="label mb-1 block">Title</label>
+                <input required className="input" value={newTask.title} onChange={e => setNewTask({...newTask, title: e.target.value})} placeholder="What needs to be done?" />
+              </div>
+              <div>
+                <label className="label mb-1 block">Description</label>
+                <textarea className="input min-h-[100px]" value={newTask.description} onChange={e => setNewTask({...newTask, description: e.target.value})} placeholder="Details..." />
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="label mb-1 block">Due Date</label>
+                  <input required type="date" className="input" value={newTask.dueDate} onChange={e => setNewTask({...newTask, dueDate: e.target.value})} />
+                </div>
+                <div>
+                  <label className="label mb-1 block">Priority</label>
+                  <select className="input" value={newTask.priority} onChange={e => setNewTask({...newTask, priority: e.target.value})}>
+                    <option value="LOW">Low</option>
+                    <option value="MEDIUM">Medium</option>
+                    <option value="HIGH">High</option>
+                  </select>
+                </div>
+              </div>
+              <div>
+                <label className="label mb-1 block">Assign To</label>
+                <select required className="input" value={newTask.assignedTo} onChange={e => setNewTask({...newTask, assignedTo: e.target.value})}>
+                  <option value="">Select Member...</option>
+                  {allUsers.map(u => (
+                    <option key={u.id} value={u.id}>{u.name} ({u.email})</option>
+                  ))}
+                </select>
+              </div>
+              <div className="pt-4 flex gap-3">
+                <button type="submit" className="primary-btn flex-1 justify-center">Create Task</button>
+                <button type="button" onClick={() => setShowCreate(false)} className="btn-secondary">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
       )}
     </div>
   )

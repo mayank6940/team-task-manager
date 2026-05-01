@@ -34,6 +34,7 @@ model User {
   projects       ProjectMember[]
   assignedTasks  Task[]   @relation("assignedTasks")
   createdTasks   Task[]   @relation("createdTasks")
+  activities     Activity[]
 }
 
 model Project {
@@ -44,6 +45,7 @@ model Project {
   createdAt   DateTime        @default(now())
   members     ProjectMember[]
   tasks       Task[]
+  activities  Activity[]
 }
 
 model ProjectMember {
@@ -72,4 +74,16 @@ model Task {
   createdById  String
   createdAt    DateTime   @default(now())
   updatedAt    DateTime   @updatedAt
+}
+
+model Activity {
+  id        String   @id @default(cuid())
+  type      String   // TASK_CREATED, TASK_UPDATED, PROJECT_CREATED, etc.
+  message   String
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  projectId String?
+  project   Project? @relation(fields: [projectId], references: [id])
+  taskId    String?
+  createdAt DateTime @default(now())
 }

@@ -2,6 +2,7 @@ import { Router, Request, Response } from 'express'
 import { body, validationResult } from 'express-validator'
 import prisma from '../prismaClient'
 import { requireAdmin } from '../middleware/roles'
+import { logActivity } from '../utils/activityLogger'
 
 const router = Router()
 
@@ -24,6 +25,9 @@ router.post(
       const project = await prisma.project.create({ data: { name, description, priority: priority || 'MEDIUM' } })
       // add creator as member
       await prisma.projectMember.create({ data: { projectId: project.id, userId: creatorId } })
+      
+      await logActivity('PROJECT_CREATED', `created the project: ${name}`, creatorId, project.id)
+      
       return res.status(201).json(project)
     } catch (err) {
       console.error(err)
@@ -45,7 +49,13 @@ router.get('/', async (req: Request, res: Response) => {
         } 
       } 
     })
-    const projects = memberships.map((m) => m.project)
+    const projects = memberships.map((m) => {
+      const p = m.project as any
+      if ((req as any).user.role !== 'ADMIN') {
+        p.tasks = p.tasks.filter((t: any) => t.assignedToId === (req as any).user.id)
+      }
+      return p
+    })
     return res.json({ projects })
   } catch (err) {
     console.error(err)
@@ -68,8 +78,12 @@ router.get('/:id', async (req: Request, res: Response) => {
     const mem = await prisma.projectMember.findUnique({ where: { userId_projectId: { userId: (req as any).user.id, projectId } } })
     if (!mem) return res.status(403).json({ message: 'Not a project member' })
 
-    const members = project.members.map((m) => (m.user))
-    return res.json({ project: { id: project.id, name: project.name, description: project.description, createdAt: project.createdAt }, members, tasks: project.tasks })
+    let tasks = project.tasks
+    if ((req as any).user.role !== 'ADMIN') {
+      tasks = tasks.filter(t => t.assignedToId === (req as any).user.id)
+    }
+
+    return res.json({ project: { id: project.id, name: project.name, description: project.description, createdAt: project.createdAt }, members: project.members, tasks })
   } catch (err) {
     console.error(err)
     return res.status(500).json({ message: 'Server error' })
@@ -131,6 +145,20 @@ router.delete('/:id', requireAdmin, async (req: Request, res: Response) => {
     await prisma.projectMember.deleteMany({ where: { projectId } })
     await prisma.project.delete({ where: { id: projectId } })
     return res.json({ message: 'Project deleted' })
+  } catch (err) {
+    console.error(err)
+    return res.status(500).json({ message: 'Server error' })
+  }
+})
+
+router.get('/feed/recent', async (req: Request, res: Response) => {
+  try {
+    const activities = await prisma.activity.findMany({
+      take: 10,
+      orderBy: { createdAt: 'desc' },
+      include: { user: { select: { name: true } }, project: { select: { name: true } } }
+    })
+    return res.json(activities)
   } catch (err) {
     console.error(err)
     return res.status(500).json({ message: 'Server error' })

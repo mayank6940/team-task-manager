@@ -15,14 +15,15 @@ export default function Navbar() {
   const [showProfile, setShowProfile] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-gray-100 px-6 py-4">
+    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-gray-100 px-6 py-4 transition-colors shadow-sm shadow-blue-500/[0.02]">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <Link to="/" className="flex items-center gap-2 group">
-          <div className="bg-[#1a140c] text-white px-3 py-1.5 rounded-xl font-black text-sm group-hover:scale-105 transition-transform shadow-lg shadow-black/5">TTM</div>
-          <span className="font-bold text-lg tracking-tight text-[#1a140c]">Team Task Manager</span>
+          <div className="bg-black text-white px-3 py-1.5 rounded-xl font-black text-sm group-hover:scale-105 transition-transform shadow-lg shadow-black/10">TTM</div>
+          <span className="hidden sm:inline font-bold text-lg tracking-tight text-[#1a140c]">Team Task Manager</span>
         </Link>
         
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-4">
+
           <div className="relative">
             <button 
               onClick={() => setShowProfile(!showProfile)}
@@ -30,9 +31,9 @@ export default function Navbar() {
             >
               <div className="hidden sm:block">
                 <div className="text-sm font-black text-[#1a140c] leading-none">{user?.name}</div>
-                <div className="text-[10px] font-bold text-blue-500 uppercase tracking-widest mt-1">{user?.role}</div>
+                <div className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-1">{user?.role}</div>
               </div>
-              <div className="avatar h-10 w-10 shadow-sm ring-4 ring-gray-50 group-hover:ring-blue-50 transition-all">{initials}</div>
+              <div className="avatar h-10 w-10 shadow-sm ring-4 ring-gray-50 group-hover:ring-blue-50 transition-all bg-gray-100 text-gray-800">{initials}</div>
             </button>
 
             {showProfile && (
@@ -41,10 +42,10 @@ export default function Navbar() {
                 <div className="absolute right-0 mt-3 w-72 bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden z-20 animate-in fade-in slide-in-from-top-2 duration-200">
                   <div className="p-6 bg-gray-50/50 border-b border-gray-100">
                     <div className="flex items-center gap-4">
-                      <div className="avatar h-14 w-14 text-xl shadow-md ring-4 ring-white">{initials}</div>
+                      <div className="avatar h-14 w-14 text-xl shadow-md ring-4 ring-white bg-gray-100 text-gray-800">{initials}</div>
                       <div className="min-w-0">
                         <div className="text-lg font-black text-gray-900 truncate">{user?.name}</div>
-                        <div className="text-xs font-bold text-blue-600 uppercase tracking-widest">{user?.role}</div>
+                        <div className="text-xs font-bold text-gray-400 uppercase tracking-widest">{user?.role}</div>
                       </div>
                     </div>
                   </div>

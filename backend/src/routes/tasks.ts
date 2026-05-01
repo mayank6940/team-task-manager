@@ -1,6 +1,7 @@
 import { Router, Request, Response } from 'express'
 import { body, validationResult } from 'express-validator'
 import prisma from '../prismaClient'
+import { logActivity } from '../utils/activityLogger'
 import { requireAdmin } from '../middleware/roles'
 
 const router = Router()
@@ -32,6 +33,17 @@ router.post(
           createdById: (req as any).user.id
         }
       })
+      
+      if (assignedTo) {
+        await prisma.projectMember.upsert({
+          where: { userId_projectId: { userId: assignedTo, projectId } },
+          create: { userId: assignedTo, projectId },
+          update: {}
+        })
+      }
+      
+      await logActivity('TASK_CREATED', `created task: ${title} in ${project?.name || 'project'}`, (req as any).user.id, projectId, task.id)
+      
       return res.status(201).json(task)
     } catch (err) {
       console.error(err)
@@ -46,7 +58,11 @@ router.get('/projects/:projectId/tasks', async (req: Request, res: Response) => 
     const member = await prisma.projectMember.findUnique({ where: { userId_projectId: { userId: (req as any).user.id, projectId } } })
     if (!member) return res.status(403).json({ message: 'Not a project member' })
 
-    const tasks = await prisma.task.findMany({ where: { projectId } })
+    const whereClause: any = { projectId }
+    if ((req as any).user.role !== 'ADMIN') {
+      whereClause.assignedToId = (req as any).user.id
+    }
+    const tasks = await prisma.task.findMany({ where: whereClause })
     return res.json({ tasks })
   } catch (err) {
     console.error(err)
@@ -63,11 +79,27 @@ router.patch('/tasks/:id', async (req: Request, res: Response) => {
 
     if ((req as any).user.role === 'ADMIN') {
       const updated = await prisma.task.update({ where: { id }, data: { ...updates, dueDate: updates.dueDate ? new Date(updates.dueDate) : undefined } })
+      
+      if (updates.status && updates.status !== task.status) {
+        await logActivity('TASK_UPDATED', `updated status of "${task.title}" to ${updates.status}`, (req as any).user.id, task.projectId, task.id)
+      }
+
+      if (updates.assignedToId) {
+        await prisma.projectMember.upsert({
+          where: { userId_projectId: { userId: updates.assignedToId, projectId: task.projectId } },
+          create: { userId: updates.assignedToId, projectId: task.projectId },
+          update: {}
+        })
+      }
+      
       return res.json(updated)
     }
 
     if (updates.status && task.assignedToId === (req as any).user.id) {
       const updated = await prisma.task.update({ where: { id }, data: { status: updates.status } })
+      
+      await logActivity('TASK_UPDATED', `marked "${task.title}" as ${updates.status}`, (req as any).user.id, task.projectId, task.id)
+      
       return res.json(updated)
     }
 
