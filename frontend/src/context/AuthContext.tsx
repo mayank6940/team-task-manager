@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
-import jwtDecode from 'jwt-decode'
+import * as jwt_decode from 'jwt-decode'
+const jwtDecode = (jwt_decode as any).default || jwt_decode
 
 type User = { id: string; name: string; email: string; role: string } | null
 
