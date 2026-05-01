@@ -157,18 +157,21 @@ export default function Dashboard() {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Projects Section */}
-          <div className="lg:col-span-2 space-y-6">
-            <div className="flex items-center justify-between">
-              <h3 className="text-xl font-bold text-[#1a140c]">Active Projects</h3>
-              <div className="pill bg-white shadow-sm border border-gray-100">{projects.length} Total</div>
-            </div>
-            
-            {projects.length > 0 ? (
+          <div className="lg:col-span-2 space-y-10">
+            {/* Active Projects */}
+            <div className="space-y-6">
+              <div className="flex items-center justify-between">
+                <h3 className="text-xl font-bold text-[#1a140c]">Active Projects</h3>
+                <div className="pill bg-white shadow-sm border border-gray-100">
+                  {projects.filter((p: any) => p.tasks?.length === 0 || p.tasks?.some((t: any) => t.status !== 'DONE')).length}
+                </div>
+              </div>
+              
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {projects.map((p: any) => {
+                {projects.filter((p: any) => p.tasks?.length === 0 || p.tasks?.some((t: any) => t.status !== 'DONE')).map((p: any) => {
                   const accent = p.priority === 'HIGH' ? 'bg-rose-500' : p.priority === 'MEDIUM' ? 'bg-amber-500' : 'bg-emerald-500'
                   return (
-                    <div key={p.id} className="card group relative flex flex-col justify-between overflow-hidden">
+                    <div key={p.id} className="card group relative flex flex-col justify-between overflow-hidden min-h-[180px]">
                       <div className={`absolute top-0 left-0 w-full h-1.5 ${accent}`}></div>
                       <div className="mb-4">
                         <Link to={`/projects/${p.id}`} className="block group-hover:translate-x-1 transition-transform">
@@ -183,10 +186,10 @@ export default function Dashboard() {
                       <div className="flex items-center justify-between pt-4 border-t border-gray-100/60">
                         <div className="flex -space-x-2">
                           {p.members?.slice(0,3).map((m: any) => (
-                            <div key={m.id} title={m.name} className="avatar h-8 w-8 text-[10px] border-2 border-[#fbf6f1]">{m.name.split(' ').map((s:any)=>s[0]).slice(0,2).join('')}</div>
+                            <div key={m.id} title={m.user?.name} className="avatar h-8 w-8 text-[10px] border-2 border-white">{m.user?.name.split(' ').map((s:any)=>s[0]).slice(0,2).join('')}</div>
                           ))}
                           {p.members?.length > 3 && (
-                            <div className="avatar h-8 w-8 text-[10px] border-2 border-[#fbf6f1] bg-gray-200">+{p.members.length - 3}</div>
+                            <div className="avatar h-8 w-8 text-[10px] border-2 border-white bg-gray-200">+{p.members.length - 3}</div>
                           )}
                         </div>
                         {user?.role === 'ADMIN' && (
@@ -196,14 +199,45 @@ export default function Dashboard() {
                     </div>
                   )
                 })}
+                {projects.length === 0 && (
+                  <div className="col-span-full card py-20 flex flex-col items-center justify-center text-center">
+                    <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+                      <svg className="w-8 h-8 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                    </div>
+                    <h4 className="text-lg font-bold text-gray-900">No projects yet</h4>
+                    <p className="text-gray-500 max-w-xs mt-1">Get started by creating your first project and inviting team members.</p>
+                  </div>
+                )}
               </div>
-            ) : (
-              <div className="card py-20 flex flex-col items-center justify-center text-center">
-                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
-                  <svg className="w-8 h-8 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+            </div>
+
+            {/* Completed Projects */}
+            {projects.some((p: any) => p.tasks?.length > 0 && p.tasks?.every((t: any) => t.status === 'DONE')) && (
+              <div className="space-y-6 pt-6 border-t border-gray-100">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-sm font-black text-gray-400 uppercase tracking-widest">Completed Projects</h3>
+                  <span className="text-[10px] font-bold text-emerald-500">All Tasks Done</span>
                 </div>
-                <h4 className="text-lg font-bold text-gray-900">No projects yet</h4>
-                <p className="text-gray-500 max-w-xs mt-1">Get started by creating your first project and inviting team members.</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 opacity-60 hover:opacity-100 transition-opacity">
+                  {projects.filter((p: any) => p.tasks?.length > 0 && p.tasks?.every((t: any) => t.status === 'DONE')).map((p: any) => (
+                    <div key={p.id} className="card group bg-gray-50/50 border-dashed flex flex-col justify-between min-h-[140px]">
+                      <div>
+                        <Link to={`/projects/${p.id}`} className="block">
+                          <div className="font-bold text-gray-600 mb-1 flex items-center gap-2 italic line-through decoration-gray-300">
+                            {p.name}
+                            <svg className="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
+                          </div>
+                        </Link>
+                      </div>
+                      <div className="flex items-center justify-between pt-4">
+                        <div className="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-md uppercase">Archive Ready</div>
+                        {user?.role === 'ADMIN' && (
+                          <button onClick={() => onRequestDeleteProject(p.id)} className="text-xs font-bold text-rose-400 hover:text-rose-600">Delete</button>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             )}
           </div>
