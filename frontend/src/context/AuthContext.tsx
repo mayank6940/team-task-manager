@@ -36,8 +36,18 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const setToken = (t: string | null) => {
     setTokenState(t)
-    if (t) localStorage.setItem('token', t)
-    else localStorage.removeItem('token')
+    if (t) {
+      localStorage.setItem('token', t)
+      try {
+        const decoded: any = jwtDecode(t)
+        setUser({ id: decoded.id, name: decoded.name, email: decoded.email, role: decoded.role })
+      } catch (e) {
+        setUser(null)
+      }
+    } else {
+      localStorage.removeItem('token')
+      setUser(null)
+    }
   }
 
   return <AuthContext.Provider value={{ user, token, setToken, isLoading }}>{children}</AuthContext.Provider>

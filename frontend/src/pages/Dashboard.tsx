@@ -100,174 +100,162 @@ export default function Dashboard() {
       <Navbar />
 
       <div className="w-full px-4 py-8 max-w-7xl mx-auto">
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center justify-between mb-8">
           <div>
             <div className="section-label">Overview</div>
-            <h2 className="text-3xl font-bold text-[#3b2b26]">Dashboard</h2>
+            <h2 className="text-4xl font-extrabold text-[#1a140c] tracking-tight">Dashboard</h2>
           </div>
           <div className="flex gap-3 items-center">
-            {user?.role === 'ADMIN' && <button onClick={() => setShowCreate(true)} className="primary-btn">New Project</button>}
-            <button className="ghost-btn">Help</button>
+            {user?.role === 'ADMIN' && (
+              <button onClick={() => setShowCreate(true)} className="primary-btn">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4"/></svg>
+                New Project
+              </button>
+            )}
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+        {/* Top Stats */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
           <div className="stat-card">
-            <div className="p-3 rounded-lg bg-blue-50">
-              <svg className="h-6 w-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M9 12h6"></path></svg>
+            <div className="p-3 rounded-2xl bg-blue-50/50">
+              <svg className="h-6 w-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
             </div>
             <div>
-              <div className="text-sm text-gray-500">Total</div>
-              <div className="text-2xl font-bold text-gray-800">{data.total}</div>
+              <div className="text-xs font-bold text-gray-400 uppercase tracking-wider">Total Tasks</div>
+              <div className="text-2xl font-black text-gray-900">{data.total}</div>
             </div>
           </div>
           <div className="stat-card">
-            <div className="p-3 rounded-lg bg-yellow-50">
-              <div className="h-6 w-6 text-yellow-600">●</div>
+            <div className="p-3 rounded-2xl bg-amber-50/50">
+              <div className="h-6 w-6 flex items-center justify-center text-amber-600 font-black text-xl">!</div>
             </div>
             <div>
-              <div className="text-sm text-gray-500">Todo</div>
-              <div className="text-2xl font-bold text-gray-800">{data.byStatus.TODO}</div>
+              <div className="text-xs font-bold text-gray-400 uppercase tracking-wider">To Do</div>
+              <div className="text-2xl font-black text-gray-900">{data.byStatus.TODO}</div>
             </div>
           </div>
           <div className="stat-card">
-            <div className="p-3 rounded-lg bg-blue-50">
-              <div className="h-6 w-6 text-blue-600">●</div>
+            <div className="p-3 rounded-2xl bg-indigo-50/50">
+              <svg className="h-6 w-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
             </div>
             <div>
-              <div className="text-sm text-gray-500">In Progress</div>
-              <div className="text-2xl font-bold text-gray-800">{data.byStatus.IN_PROGRESS}</div>
+              <div className="text-xs font-bold text-gray-400 uppercase tracking-wider">In Progress</div>
+              <div className="text-2xl font-black text-gray-900">{data.byStatus.IN_PROGRESS}</div>
             </div>
           </div>
           <div className="stat-card">
-            <div className="p-3 rounded-lg bg-green-50">
-              <div className="h-6 w-6 text-green-600">●</div>
+            <div className="p-3 rounded-2xl bg-emerald-50/50">
+              <svg className="h-6 w-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"></path></svg>
             </div>
             <div>
-              <div className="text-sm text-gray-500">Done</div>
-              <div className="text-2xl font-bold text-gray-800">{data.byStatus.DONE}</div>
+              <div className="text-xs font-bold text-gray-400 uppercase tracking-wider">Completed</div>
+              <div className="text-2xl font-black text-gray-900">{data.byStatus.DONE}</div>
             </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-          <div className="card">
-            <div className="card-header">
-              <h3 className="text-lg font-semibold text-gray-800">My Projects</h3>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Projects Section */}
+          <div className="lg:col-span-2 space-y-6">
+            <div className="flex items-center justify-between">
+              <h3 className="text-xl font-bold text-[#1a140c]">Active Projects</h3>
+              <div className="pill bg-white shadow-sm border border-gray-100">{projects.length} Total</div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-96 overflow-y-auto">
-              {projects.map((p: any) => {
-                const accent = p.priority === 'HIGH' ? 'bg-red-500' : p.priority === 'MEDIUM' ? 'bg-yellow-500' : 'bg-green-500'
-                return (
-                  <div key={p.id} className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition">
-                    <div className={`project-accent ${accent}`}></div>
-                    <div className="flex-1 min-w-0">
-                      <Link to={`/projects/${p.id}`} className="block">
-                        <div className="font-semibold text-gray-800 truncate">{p.name}</div>
-                        <div className="text-sm text-gray-500 mt-1 line-clamp-2">{p.description}</div>
-                      </Link>
-                      <div className="mt-3 flex items-center gap-2">
+            
+            {projects.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {projects.map((p: any) => {
+                  const accent = p.priority === 'HIGH' ? 'bg-rose-500' : p.priority === 'MEDIUM' ? 'bg-amber-500' : 'bg-emerald-500'
+                  return (
+                    <div key={p.id} className="card group relative flex flex-col justify-between overflow-hidden">
+                      <div className={`absolute top-0 left-0 w-full h-1.5 ${accent}`}></div>
+                      <div className="mb-4">
+                        <Link to={`/projects/${p.id}`} className="block group-hover:translate-x-1 transition-transform">
+                          <div className="font-bold text-lg text-gray-900 mb-1 flex items-center gap-2">
+                            {p.name}
+                            <svg className="w-4 h-4 text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                          </div>
+                          <p className="text-sm text-gray-500 line-clamp-2 leading-relaxed">{p.description}</p>
+                        </Link>
+                      </div>
+                      
+                      <div className="flex items-center justify-between pt-4 border-t border-gray-100/60">
                         <div className="flex -space-x-2">
                           {p.members?.slice(0,3).map((m: any) => (
-                            <div key={m.id} className="avatar h-7 w-7 text-xs">{m.name.split(' ').map((s:any)=>s[0]).slice(0,2).join('')}</div>
+                            <div key={m.id} title={m.name} className="avatar h-8 w-8 text-[10px] border-2 border-[#fbf6f1]">{m.name.split(' ').map((s:any)=>s[0]).slice(0,2).join('')}</div>
                           ))}
+                          {p.members?.length > 3 && (
+                            <div className="avatar h-8 w-8 text-[10px] border-2 border-[#fbf6f1] bg-gray-200">+{p.members.length - 3}</div>
+                          )}
                         </div>
-                        <div className="ml-auto">
-                          <button onClick={() => onRequestDeleteProject(p.id)} className="ghost-btn">Delete</button>
-                        </div>
+                        {user?.role === 'ADMIN' && (
+                          <button onClick={() => onRequestDeleteProject(p.id)} className="text-xs font-bold text-rose-500 hover:text-rose-600 p-2 opacity-0 group-hover:opacity-100 transition-opacity">Delete</button>
+                        )}
                       </div>
                     </div>
-                  </div>
-                )
-              })}
-            </div>
+                  )
+                })}
+              </div>
+            ) : (
+              <div className="card py-20 flex flex-col items-center justify-center text-center">
+                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+                  <svg className="w-8 h-8 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                </div>
+                <h4 className="text-lg font-bold text-gray-900">No projects yet</h4>
+                <p className="text-gray-500 max-w-xs mt-1">Get started by creating your first project and inviting team members.</p>
+              </div>
+            )}
           </div>
 
-          <div>
-            <div className="card mb-4">
-              <h3 className="text-lg font-semibold text-gray-800 mb-2">Overdue Tasks</h3>
-              <div className="space-y-2 max-h-56 overflow-y-auto">
+          {/* Side Panels */}
+          <div className="space-y-6">
+            <div className="card border-l-[6px] border-rose-500">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="font-bold text-gray-900">Overdue Tasks</h3>
+                <span className="pill bg-rose-50 text-rose-600 text-[10px]">{data.overdue.length}</span>
+              </div>
+              <div className="space-y-3 max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
                 {data.overdue.length > 0 ? data.overdue.map((t:any)=>(
-                  <div key={t.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg shadow-sm">
-                    <div>
-                      <div className="font-medium text-gray-800 truncate">{t.title}</div>
-                      <div className="muted-2">Due: {new Date(t.dueDate).toLocaleDateString()}</div>
+                  <div key={t.id} className="p-3 bg-white/40 rounded-xl border border-white/60 shadow-sm">
+                    <div className="font-bold text-sm text-gray-800 mb-1">{t.title}</div>
+                    <div className="flex items-center justify-between text-[10px]">
+                      <span className="text-rose-500 font-black">EXPIRED</span>
+                      <span className="text-gray-400">{new Date(t.dueDate).toLocaleDateString()}</span>
                     </div>
-                    <div className="text-sm text-red-600 font-semibold">Overdue</div>
                   </div>
-                )) : <p className="muted-2">No overdue tasks</p>}
+                )) : <p className="text-center py-6 text-sm text-gray-400 italic">Everything's on track!</p>}
               </div>
             </div>
 
-            <div className="card">
-              <h3 className="text-lg font-semibold text-gray-800 mb-2">Assigned to Me</h3>
-              <div className="space-y-2 max-h-56 overflow-y-auto">
-                {data.assignedToMe.length>0 ? data.assignedToMe.map((t:any)=>(
-                  <div key={t.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg shadow-sm">
-                    <div>
-                      <div className="font-medium text-gray-800 truncate">{t.title}</div>
-                      <div className="muted-2">Status: {t.status}</div>
+            <div className="card border-l-[6px] border-blue-500">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="font-bold text-gray-900">Assigned to Me</h3>
+                <span className="pill bg-blue-50 text-blue-600 text-[10px]">{data.assignedToMe.length}</span>
+              </div>
+              <div className="space-y-3 max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
+                {data.assignedToMe.length > 0 ? data.assignedToMe.map((t:any)=>(
+                  <div key={t.id} className="p-3 bg-white/40 rounded-xl border border-white/60 shadow-sm flex flex-col gap-2">
+                    <div className="font-bold text-sm text-gray-800">{t.title}</div>
+                    <div className="flex items-center justify-between">
+                      <span className={`text-[9px] font-black uppercase px-2 py-0.5 rounded-full ${t.status === 'DONE' ? 'bg-emerald-100 text-emerald-700' : 'bg-blue-100 text-blue-700'}`}>
+                        {t.status.replace('_', ' ')}
+                      </span>
                     </div>
-                    <div className="pill">{t.status}</div>
                   </div>
-                )) : <p className="muted-2">No tasks assigned to you</p>}
+                )) : <p className="text-center py-6 text-sm text-gray-400 italic">No pending assignments.</p>}
               </div>
             </div>
           </div>
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <div className="card">
-            <div className="text-gray-600 text-sm font-medium">Total Tasks</div>
-            <div className="text-4xl font-bold text-blue-600 mt-2">{data.total}</div>
-          </div>
-          <div className="card">
-            <div className="text-gray-600 text-sm font-medium">TODO</div>
-            <div className="text-4xl font-bold text-yellow-600 mt-2">{data.byStatus.TODO}</div>
-          </div>
-          <div className="card">
-            <div className="text-gray-600 text-sm font-medium">In Progress</div>
-            <div className="text-4xl font-bold text-blue-600 mt-2">{data.byStatus.IN_PROGRESS}</div>
-          </div>
-          <div className="card">
-            <div className="text-gray-600 text-sm font-medium">Done</div>
-            <div className="text-4xl font-bold text-green-600 mt-2">{data.byStatus.DONE}</div>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div>
-            <h3 className="text-xl font-bold text-gray-800 mb-4">Overdue Tasks</h3>
-            {data.overdue.length > 0 ? (
-              <ul className="space-y-2 max-h-96 overflow-y-auto">
-                {data.overdue.map((t: any) => (
-                  <li key={t.id} className="card border-l-4 border-red-500">
-                    <div className="font-medium text-gray-800 truncate">{t.title}</div>
-                    <div className="text-sm text-gray-600">Due: {new Date(t.dueDate).toLocaleDateString()}</div>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p className="text-gray-500">No overdue tasks</p>
-            )}
-          </div>
-
-          <div>
-            <h3 className="text-xl font-bold text-gray-800 mb-4">Assigned to Me</h3>
-            {data.assignedToMe.length > 0 ? (
-              <ul className="space-y-2 max-h-96 overflow-y-auto">
-                {data.assignedToMe.map((t: any) => (
-                  <li key={t.id} className="card border-l-4 border-blue-500">
-                    <div className="font-medium text-gray-800 truncate">{t.title}</div>
-                    <div className="text-sm text-gray-600">Status: {t.status}</div>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p className="text-gray-500">No tasks assigned to you</p>
-            )}
-          </div>
-        </div>
+      </div>
+      {projectToDelete && (
+        <ConfirmModal open={!!projectToDelete} title="Delete project" message="Are you sure you want to delete this project and its tasks? This cannot be undone." onConfirm={confirmDeleteProject} onCancel={() => setProjectToDelete(null)} />
+      )}
+      {showCreate && (
+        <CreateProjectModal open={showCreate} onClose={() => setShowCreate(false)} onCreate={handleCreate} />
+      )}
+    </div>
       </div>
       {projectToDelete && (
         <ConfirmModal open={!!projectToDelete} title="Delete project" message="Are you sure you want to delete this project and its tasks? This cannot be undone." onConfirm={confirmDeleteProject} onCancel={() => setProjectToDelete(null)} />
