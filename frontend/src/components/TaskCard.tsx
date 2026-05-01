@@ -45,7 +45,7 @@ export default function TaskCard({ task, onStatusChange, members, onAssign, canA
                   className="text-[10px] font-bold bg-gray-50 border-none rounded-lg focus:ring-0 text-blue-600 hover:text-blue-700 transition-colors py-1 px-2 cursor-pointer"
                 >
                   <option value="">Unassigned</option>
-                  {members.map((m: any) => (
+                  {members.filter((m: any) => m.role !== 'ADMIN').map((m: any) => (
                     <option key={m.id} value={m.id}>{m.name}</option>
                   ))}
                 </select>

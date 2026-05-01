@@ -146,10 +146,17 @@ export default function Project() {
           <h4 className="font-bold text-gray-800 mb-4">Team Members</h4>
           <ul className="space-y-2">
             {members.map(m => (
-              <li key={m.id} className="flex justify-between text-gray-700">
-                <span className="font-medium">{m.name}</span>
-                <span className="text-gray-500">{m.email}</span>
-              </li>
+              <div key={m.id} className="flex items-center gap-4 bg-white/5 p-4 rounded-2xl border border-white/10">
+                <div className="avatar h-10 w-10 text-[10px] bg-white/10 text-white border-white/20">{m.name.split(' ').map((s:any)=>s[0]).slice(0,2).join('')}</div>
+                <div className="min-w-0">
+                  <div className="font-bold text-sm truncate">{m.name}</div>
+                  {m.role !== 'ADMIN' ? (
+                    <div className="text-[10px] text-gray-400 truncate uppercase font-bold tracking-tight">{m.email}</div>
+                  ) : (
+                    <div className="text-[10px] text-blue-400 uppercase font-black tracking-widest">Administrator</div>
+                  )}
+                </div>
+              </div>
             ))}
           </ul>
         </div>
