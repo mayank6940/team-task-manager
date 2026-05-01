@@ -2,10 +2,11 @@
   "name": "team-task-manager",
   "private": true,
   "workspaces": [
-    "backend"
+    "backend",
+    "frontend"
   ],
   "scripts": {
-    "build": "npm run build --workspace backend",
-    "start": "npm run start:prod --workspace backend"
+    "build": "cd backend && npm install && npm run build",
+    "start": "cd backend && npm run start:prod"
   }
 }
