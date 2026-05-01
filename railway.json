@@ -1,0 +1,11 @@
+{
+  "plugins": [
+    {
+      "name": "postgresql"
+    }
+  ],
+  "deploy": {
+    "start": "npm start",
+    "build": "npm run build"
+  }
+}
