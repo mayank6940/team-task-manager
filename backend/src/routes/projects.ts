@@ -34,7 +34,17 @@ router.post(
 
 router.get('/', async (req: Request, res: Response) => {
   try {
-    const memberships = await prisma.projectMember.findMany({ where: { userId: (req as any).user.id }, include: { project: true } })
+    const memberships = await prisma.projectMember.findMany({ 
+      where: { userId: (req as any).user.id }, 
+      include: { 
+        project: {
+          include: {
+            tasks: true,
+            members: { include: { user: true } }
+          }
+        } 
+      } 
+    })
     const projects = memberships.map((m) => m.project)
     return res.json({ projects })
   } catch (err) {
