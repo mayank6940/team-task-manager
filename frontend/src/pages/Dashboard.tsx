@@ -163,12 +163,12 @@ export default function Dashboard() {
               <div className="flex items-center justify-between">
                 <h3 className="text-xl font-bold text-[#1a140c]">Active Projects</h3>
                 <div className="pill bg-white shadow-sm border border-gray-100">
-                  {projects.filter((p: any) => p.tasks?.length === 0 || p.tasks?.some((t: any) => t.status !== 'DONE')).length}
+                  {projects.filter((p: any) => (p.tasks || []).length === 0 || (p.tasks || []).some((t: any) => t.status !== 'DONE')).length}
                 </div>
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {projects.filter((p: any) => p.tasks?.length === 0 || p.tasks?.some((t: any) => t.status !== 'DONE')).map((p: any) => {
+                {projects.filter((p: any) => (p.tasks || []).length === 0 || (p.tasks || []).some((t: any) => t.status !== 'DONE')).map((p: any) => {
                   const accent = p.priority === 'HIGH' ? 'bg-rose-500' : p.priority === 'MEDIUM' ? 'bg-amber-500' : 'bg-emerald-500'
                   return (
                     <div key={p.id} className="card group relative flex flex-col justify-between overflow-hidden min-h-[180px]">
@@ -212,14 +212,14 @@ export default function Dashboard() {
             </div>
 
             {/* Completed Projects */}
-            {projects.some((p: any) => p.tasks?.length > 0 && p.tasks?.every((t: any) => t.status === 'DONE')) && (
+            {projects.some((p: any) => (p.tasks || []).length > 0 && (p.tasks || []).every((t: any) => t.status === 'DONE')) && (
               <div className="space-y-6 pt-6 border-t border-gray-100">
                 <div className="flex items-center justify-between">
                   <h3 className="text-sm font-black text-gray-400 uppercase tracking-widest">Completed Projects</h3>
                   <span className="text-[10px] font-bold text-emerald-500">All Tasks Done</span>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 opacity-60 hover:opacity-100 transition-opacity">
-                  {projects.filter((p: any) => p.tasks?.length > 0 && p.tasks?.every((t: any) => t.status === 'DONE')).map((p: any) => (
+                  {projects.filter((p: any) => (p.tasks || []).length > 0 && (p.tasks || []).every((t: any) => t.status === 'DONE')).map((p: any) => (
                     <div key={p.id} className="card group bg-gray-50/50 border-dashed flex flex-col justify-between min-h-[140px]">
                       <div>
                         <Link to={`/projects/${p.id}`} className="block">
