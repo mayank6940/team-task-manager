@@ -256,13 +256,5 @@ export default function Dashboard() {
         <CreateProjectModal open={showCreate} onClose={() => setShowCreate(false)} onCreate={handleCreate} />
       )}
     </div>
-      </div>
-      {projectToDelete && (
-        <ConfirmModal open={!!projectToDelete} title="Delete project" message="Are you sure you want to delete this project and its tasks? This cannot be undone." onConfirm={confirmDeleteProject} onCancel={() => setProjectToDelete(null)} />
-      )}
-      {showCreate && (
-        <CreateProjectModal open={showCreate} onClose={() => setShowCreate(false)} onCreate={handleCreate} />
-      )}
-    </div>
   )
 }
