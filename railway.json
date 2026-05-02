@@ -5,7 +5,7 @@
     "buildCommand": "cd frontend && npm install && npm run build"
   },
   "deploy": {
-    "startCommand": "npx serve frontend/dist -l $PORT --config frontend/serve.json",
+    "startCommand": "npx serve frontend/dist -l $PORT",
     "restartPolicyType": "ON_FAILURE"
   }
 }
