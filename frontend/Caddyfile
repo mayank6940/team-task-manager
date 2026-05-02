@@ -3,12 +3,11 @@
 }
 
 :{$PORT} {
-    # On Railway, the path is usually absolute from /app
+    # This tries the absolute path Railway uses for subfolder builds
     root * /app/frontend/dist
 
-    # Serve files if they exist
     file_server
-
-    # Fallback to index.html for SPA routing
+    
+    # Standard SPA routing
     try_files {path} /index.html
 }
