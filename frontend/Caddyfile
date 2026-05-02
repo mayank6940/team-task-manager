@@ -3,17 +3,17 @@
 }
 
 :{$PORT} {
-    # Match the root to where the files actually sit
-    root * ./dist
+    # We try both potential locations for the dist folder
+    root * /app/frontend/dist
     
-    # Handle the specific case for assets to avoid MIME errors
-    handle /assets/* {
-        file_server
+    # Fallback to relative if /app/frontend/dist doesn't exist
+    @not_absolute {
+        not file {path}
+    }
+    handle @not_absolute {
+        root * ./dist
     }
 
-    # Standard SPA handling
-    handle {
-        file_server
-        try_files {path} /index.html
-    }
+    file_server
+    try_files {path} /index.html
 }
