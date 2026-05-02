@@ -5,6 +5,7 @@ import Signup from './pages/Signup'
 import Dashboard from './pages/Dashboard'
 import Project from './pages/Project'
 import Team from './pages/Team'
+import Task from './pages/Task'
 import { AuthProvider, useAuth } from './context/AuthContext'
 
 function Protected({ children }: { children: JSX.Element }) {
