@@ -3,17 +3,12 @@
 }
 
 :{$PORT} {
-    # We try both potential locations for the dist folder
-    root * /app/frontend/dist
+    # On Railway, with Root Directory set to 'frontend', 
+    # the files are typically at /app/dist or /app/frontend/dist.
+    root * /app/dist
     
-    # Fallback to relative if /app/frontend/dist doesn't exist
-    @not_absolute {
-        not file {path}
-    }
-    handle @not_absolute {
-        root * ./dist
-    }
-
     file_server
+    
+    # Crucial: This handles the SPA routing
     try_files {path} /index.html
 }
