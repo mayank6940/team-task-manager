@@ -3,12 +3,12 @@
 }
 
 :{$PORT} {
-    # On Railway, with Root Directory set to 'frontend', 
-    # the files are typically at /app/dist or /app/frontend/dist.
-    root * /app/dist
-    
+    # On Railway, the path is usually absolute from /app
+    root * /app/frontend/dist
+
+    # Serve files if they exist
     file_server
-    
-    # Crucial: This handles the SPA routing
+
+    # Fallback to index.html for SPA routing
     try_files {path} /index.html
 }
