@@ -3,11 +3,17 @@
 }
 
 :{$PORT} {
-    # Absolute path inside the Railway container
-    root * /app/dist
+    # Match the root to where the files actually sit
+    root * ./dist
     
-    file_server
-    
-    # This rule sends index.html if the .js file isn't found
-    try_files {path} /index.html
+    # Handle the specific case for assets to avoid MIME errors
+    handle /assets/* {
+        file_server
+    }
+
+    # Standard SPA handling
+    handle {
+        file_server
+        try_files {path} /index.html
+    }
 }
