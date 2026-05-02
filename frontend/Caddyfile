@@ -3,12 +3,11 @@
 }
 
 :{$PORT} {
-    # Since Caddyfile is now inside /frontend, the root is relative to that folder
-    root * ./dist
-
-    # Serve static files
+    # Absolute path inside the Railway container
+    root * /app/dist
+    
     file_server
-
-    # Handle SPA routing (redirects all non-file requests to index.html)
+    
+    # This rule sends index.html if the .js file isn't found
     try_files {path} /index.html
 }
