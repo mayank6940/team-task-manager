@@ -4,13 +4,20 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Dashboard from './pages/Dashboard'
 import Project from './pages/Project'
-import Task from './pages/Task'
+import Team from './pages/Team'
 import { AuthProvider, useAuth } from './context/AuthContext'
 
 function Protected({ children }: { children: JSX.Element }) {
   const { user, isLoading } = useAuth()
   if (isLoading) return <div className="min-h-screen flex items-center justify-center"><div className="text-xl text-gray-600">Loading...</div></div>
   if (!user) return <Navigate to="/login" replace />
+  return children
+}
+
+function AdminProtected({ children }: { children: JSX.Element }) {
+  const { user, isLoading } = useAuth()
+  if (isLoading) return <div className="min-h-screen flex items-center justify-center"><div className="text-xl text-gray-600">Loading...</div></div>
+  if (!user || user.role !== 'ADMIN') return <Navigate to="/" replace />
   return children
 }
 
@@ -26,6 +33,14 @@ export default function App() {
             <Protected>
               <Dashboard />
             </Protected>
+          }
+        />
+        <Route
+          path="/team"
+          element={
+            <AdminProtected>
+              <Team />
+            </AdminProtected>
           }
         />
         <Route

@@ -21,7 +21,20 @@ export default function Navbar() {
           <div className="bg-black text-white px-3 py-1.5 rounded-xl font-black text-sm group-hover:scale-105 transition-transform shadow-lg shadow-black/10">TTM</div>
           <span className="hidden sm:inline font-bold text-lg tracking-tight text-[#1a140c]">Team Task Manager</span>
         </Link>
+
+        {user?.role === 'ADMIN' && (
+          <nav className="hidden md:flex items-center ml-10 space-x-1">
+            <Link 
+              to="/team" 
+              className="px-4 py-2 text-sm font-black text-gray-400 hover:text-black transition-colors uppercase tracking-widest rounded-xl hover:bg-gray-50"
+            >
+              Organization
+            </Link>
+          </nav>
+        )}
         
+        <div className="flex-1"></div>
+
         <div className="flex items-center gap-4">
 
           <div className="relative">
@@ -50,6 +63,18 @@ export default function Navbar() {
                     </div>
                   </div>
                   <div className="p-4 space-y-1">
+                    {user?.role === 'ADMIN' && (
+                      <Link 
+                        to="/team" 
+                        onClick={() => setShowProfile(false)}
+                        className="flex items-center gap-3 px-4 py-3 text-sm font-bold text-gray-700 hover:bg-gray-50 rounded-2xl transition-all"
+                      >
+                        <div className="w-8 h-8 bg-gray-100 rounded-xl flex items-center justify-center">
+                          <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                        </div>
+                        Organization
+                      </Link>
+                    )}
                     <div className="px-3 py-2">
                       <div className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Email Address</div>
                       <div className="text-sm font-bold text-gray-700 truncate">{user?.email}</div>
