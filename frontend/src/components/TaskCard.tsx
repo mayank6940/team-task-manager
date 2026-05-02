@@ -69,6 +69,13 @@ export default function TaskCard({ task, members, onUpdate, urgent }: TaskCardPr
                 <option key={m.id} value={m.userId}>{m.user?.name}</option>
               ))}
             </select>
+          ) : !task.assignedToId ? (
+            <button 
+              onClick={() => updateTask({ assignedToId: user.id })}
+              className="text-[10px] font-black bg-blue-50 text-blue-600 px-3 py-1.5 rounded-lg hover:bg-blue-100 transition-all border border-blue-100 shadow-sm"
+            >
+              Pickup Task
+            </button>
           ) : (
             <div className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">
               {members.find(m => m.userId === task.assignedToId)?.user?.name || 'Unassigned'}
@@ -83,6 +90,22 @@ export default function TaskCard({ task, members, onUpdate, urgent }: TaskCardPr
           </div>
         )}
       </div>
+
+      {/* Mobile-Friendly Status Switcher (only for authorized users) */}
+      {(user?.role === 'ADMIN' || task.assignedToId === user?.id) && (
+        <div className="mt-4 flex gap-2">
+          <select 
+            value={task.status} 
+            onChange={(e) => updateTask({ status: e.target.value })}
+            className="w-full text-[10px] font-black bg-gray-900 text-white border-none rounded-xl py-2 px-3 cursor-pointer hover:bg-black transition-all appearance-none text-center"
+          >
+            <option value="TODO">Move to TODO</option>
+            <option value="IN_PROGRESS">Move to IN PROGRESS</option>
+            <option value="DONE">Move to DONE</option>
+          </select>
+        </div>
+      )}
+
     </div>
   )
 }

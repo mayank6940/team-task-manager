@@ -60,7 +60,10 @@ router.get('/projects/:projectId/tasks', async (req: Request, res: Response) => 
 
     const whereClause: any = { projectId }
     if ((req as any).user.role !== 'ADMIN') {
-      whereClause.assignedToId = (req as any).user.id
+      whereClause.OR = [
+        { assignedToId: (req as any).user.id },
+        { assignedToId: null }
+      ]
     }
     const tasks = await prisma.task.findMany({ where: whereClause })
     return res.json({ tasks })
@@ -97,9 +100,13 @@ router.patch('/tasks/:id', async (req: Request, res: Response) => {
 
     if (updates.status && task.assignedToId === (req as any).user.id) {
       const updated = await prisma.task.update({ where: { id }, data: { status: updates.status } })
-      
       await logActivity('TASK_UPDATED', `marked "${task.title}" as ${updates.status}`, (req as any).user.id, task.projectId, task.id)
-      
+      return res.json(updated)
+    }
+
+    if (updates.assignedToId === (req as any).user.id && !task.assignedToId) {
+      const updated = await prisma.task.update({ where: { id }, data: { assignedToId: (req as any).user.id } })
+      await logActivity('TASK_UPDATED', `picked up task: "${task.title}"`, (req as any).user.id, task.projectId, task.id)
       return res.json(updated)
     }
 
