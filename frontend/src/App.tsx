@@ -48,9 +48,9 @@ export default function App() {
         <Route
           path="/team/:id"
           element={
-            <AdminProtected>
+            <Protected>
               <MemberProfile />
-            </AdminProtected>
+            </Protected>
           }
         />
         <Route

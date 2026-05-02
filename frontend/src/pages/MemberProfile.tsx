@@ -46,11 +46,13 @@ export default function MemberProfile() {
       <Navbar />
       
       <main className="max-w-7xl mx-auto px-6 py-12 space-y-10 animate-slide-up">
-        {/* Back Navigation */}
-        <Link to="/team" className="inline-flex items-center gap-2 text-xs font-black text-gray-400 hover:text-black transition-all uppercase tracking-widest group">
-          <svg className="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7"></path></svg>
-          Back to Collective
-        </Link>
+        {/* Back Navigation (Only for Admins) */}
+        {user?.role === 'ADMIN' && (
+          <Link to="/team" className="inline-flex items-center gap-2 text-xs font-black text-gray-400 hover:text-black transition-all uppercase tracking-widest group">
+            <svg className="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7"></path></svg>
+            Back to Collective
+          </Link>
+        )}
 
         {/* Profile Header Card */}
         <div className="card p-12 bg-white border-none shadow-sm flex flex-col md:flex-row items-center gap-10 relative overflow-hidden">

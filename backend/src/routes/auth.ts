@@ -72,6 +72,13 @@ router.get('/users', async (req: Request, res: Response) => {
 
 router.get('/users/:id', async (req: Request, res: Response) => {
   const { id } = req.params
+  const currentUser = (req as any).user
+
+  // Privacy Check: Only Admins can view other users' profiles
+  if (currentUser.role !== 'ADMIN' && currentUser.id !== id) {
+    return res.status(403).json({ message: 'Forbidden: You can only view your own profile.' })
+  }
+
   try {
     const user = await prisma.user.findUnique({
       where: { id },

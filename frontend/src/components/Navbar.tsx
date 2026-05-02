@@ -53,7 +53,11 @@ export default function Navbar() {
               <>
                 <div className="fixed inset-0 z-10" onClick={() => setShowProfile(false)}></div>
                 <div className="absolute right-0 mt-3 w-72 bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden z-20 animate-in fade-in slide-in-from-top-2 duration-200">
-                  <div className="p-6 bg-gray-50/50 border-b border-gray-100">
+                  <Link 
+                    to={`/team/${user?.id}`} 
+                    onClick={() => setShowProfile(false)}
+                    className="block p-6 bg-gray-50/50 border-b border-gray-100 hover:bg-gray-100 transition-colors"
+                  >
                     <div className="flex items-center gap-4">
                       <div className="avatar h-14 w-14 text-xl shadow-md ring-4 ring-white bg-gray-100 text-gray-800">{initials}</div>
                       <div className="min-w-0">
@@ -61,7 +65,7 @@ export default function Navbar() {
                         <div className="text-xs font-bold text-gray-400 uppercase tracking-widest">{user?.role}</div>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                   <div className="p-4 space-y-1">
                     {user?.role === 'ADMIN' && (
                       <Link 
