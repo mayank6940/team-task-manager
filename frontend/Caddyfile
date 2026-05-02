@@ -1,15 +1,14 @@
-:{$PORT} {
-    root * frontend/dist
+{
+    admin off
+}
 
-    # Proxy API requests to the backend
-    reverse_proxy /api/* localhost:4000
-    
-    # Proxy health check to the backend
-    reverse_proxy /health localhost:4000
+:{$PORT} {
+    # Since Caddyfile is now inside /frontend, the root is relative to that folder
+    root * ./dist
 
     # Serve static files
     file_server
 
-    # Handle SPA routing
+    # Handle SPA routing (redirects all non-file requests to index.html)
     try_files {path} /index.html
 }
