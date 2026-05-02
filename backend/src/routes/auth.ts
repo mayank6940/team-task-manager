@@ -70,4 +70,38 @@ router.get('/users', async (req: Request, res: Response) => {
   }
 })
 
+router.get('/users/:id', async (req: Request, res: Response) => {
+  const { id } = req.params
+  try {
+    const user = await prisma.user.findUnique({
+      where: { id },
+      select: { id: true, name: true, email: true, role: true, createdAt: true }
+    })
+    if (!user) return res.status(404).json({ message: 'User not found' })
+
+    const memberships = await prisma.projectMember.findMany({
+      where: { userId: id },
+      include: { project: true }
+    })
+
+    const tasks = await prisma.task.findMany({
+      where: { assignedToId: id }
+    })
+
+    const stats = {
+      totalTasks: tasks.length,
+      todo: tasks.filter(t => t.status === 'TODO').length,
+      inProgress: tasks.filter(t => t.status === 'IN_PROGRESS').length,
+      done: tasks.filter(t => t.status === 'DONE').length,
+      projectCount: memberships.length,
+      projects: memberships.map(m => m.project)
+    }
+
+    return res.json({ user, stats })
+  } catch (err) {
+    console.error(err)
+    return res.status(500).json({ message: 'Server error' })
+  }
+})
+
 export default router

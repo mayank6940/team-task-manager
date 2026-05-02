@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { useAuth } from '../context/AuthContext'
 import Navbar from '../components/Navbar'
@@ -53,7 +54,7 @@ export default function Team() {
             const isAdmin = u.role === 'ADMIN'
             
             return (
-              <div key={u.id} className="card group hover:scale-[1.02] transition-all bg-white border border-gray-100 p-8 flex flex-col items-center text-center relative overflow-hidden">
+              <Link to={`/team/${u.id}`} key={u.id} className="card group hover:scale-[1.02] transition-all bg-white border border-gray-100 p-8 flex flex-col items-center text-center relative overflow-hidden">
                 {isAdmin && (
                   <div className="absolute top-0 right-0 p-3">
                     <div className="bg-black text-white text-[8px] font-black uppercase tracking-widest px-2 py-1 rounded-bl-xl rounded-tr-xl">Admin Access</div>
@@ -75,7 +76,7 @@ export default function Team() {
 
                 {/* Decorative element */}
                 <div className="absolute bottom-0 left-0 w-full h-1 bg-gray-50 group-hover:bg-black transition-colors duration-500"></div>
-              </div>
+              </Link>
             )
           })}
         </div>

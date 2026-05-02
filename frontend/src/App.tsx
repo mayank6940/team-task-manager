@@ -5,6 +5,7 @@ import Signup from './pages/Signup'
 import Dashboard from './pages/Dashboard'
 import Project from './pages/Project'
 import Team from './pages/Team'
+import MemberProfile from './pages/MemberProfile'
 import Task from './pages/Task'
 import { AuthProvider, useAuth } from './context/AuthContext'
 
@@ -41,6 +42,14 @@ export default function App() {
           element={
             <AdminProtected>
               <Team />
+            </AdminProtected>
+          }
+        />
+        <Route
+          path="/team/:id"
+          element={
+            <AdminProtected>
+              <MemberProfile />
             </AdminProtected>
           }
         />
