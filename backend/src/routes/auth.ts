@@ -3,6 +3,7 @@ import { body, validationResult } from 'express-validator'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import prisma from '../prismaClient'
+import verifyToken from '../middleware/verifyToken'
 
 const router = Router()
 
@@ -60,7 +61,7 @@ router.post(
   }
 )
 
-router.get('/users', async (req: Request, res: Response) => {
+router.get('/users', verifyToken as any, async (req: Request, res: Response) => {
   try {
     const users = await prisma.user.findMany({ select: { id: true, name: true, email: true, role: true } })
     return res.json(users)
@@ -70,7 +71,7 @@ router.get('/users', async (req: Request, res: Response) => {
   }
 })
 
-router.get('/users/:id', async (req: Request, res: Response) => {
+router.get('/users/:id', verifyToken as any, async (req: Request, res: Response) => {
   const { id } = req.params
   const currentUser = (req as any).user
 
