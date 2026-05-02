@@ -1,9 +1,15 @@
-{
-    admin off
+:{$PORT} {
+    root * frontend/dist
+
+    # Proxy API requests to the backend
+    reverse_proxy /api/* localhost:4000
+    
+    # Proxy health check to the backend
+    reverse_proxy /health localhost:4000
+
+    # Serve static files
+    file_server
+
+    # Handle SPA routing
+    try_files {path} /index.html
 }
-
-:{$PORT}
-
-root * ./dist
-file_server
-try_files {path} /index.html

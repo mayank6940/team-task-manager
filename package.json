@@ -9,9 +9,9 @@
     "build": "npm run build:backend && npm run build:frontend",
     "build:backend": "npm install --workspace=backend && npm run build --workspace=backend",
     "build:frontend": "npm install --workspace=frontend && npm run build --workspace=frontend",
-    "start": "concurrently \"cross-env PORT=4000 npm run start:prod --workspace=backend\" \"caddy run --config Caddyfile --adapter caddyfile\"",
+    "start": "concurrently \"cross-env PORT=4000 npm run start:prod --workspace=backend\" \"caddy run --config frontend/Caddyfile --adapter caddyfile\"",
     "start:backend": "npm run start:prod --workspace=backend",
-    "start:caddy": "caddy run --config Caddyfile --adapter caddyfile"
+    "start:caddy": "caddy run --config frontend/Caddyfile --adapter caddyfile"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
