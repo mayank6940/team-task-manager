@@ -3,11 +3,11 @@
 }
 
 :{$PORT} {
-    # This tries the absolute path Railway uses for subfolder builds
-    root * /app/frontend/dist
+    # Using relative path from the 'frontend' root directory
+    root * ./dist
 
     file_server
-    
-    # Standard SPA routing
+
+    # Standard routing for React/Vite SPAs
     try_files {path} /index.html
 }
