@@ -34,3 +34,16 @@ How to run locally:
 
 
 GitHub Repo: https://github.com/mayank6940/team-task-manager
+
+---
+
+### Access Credentials (Demo)
+
+**Admin Panel:**
+- Email: `admin@example.com`
+- Password: `AdminPass123`
+
+**Member Panel:**
+- Email: `member@example.com`
+- Password: `MemberPass123`
+
