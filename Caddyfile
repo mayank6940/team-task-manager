@@ -1,0 +1,13 @@
+{
+    admin off
+}
+
+:{$PORT} {
+    root * frontend/dist
+
+    encode gzip
+
+    try_files {path} {path}/ /index.html
+
+    file_server
+}
