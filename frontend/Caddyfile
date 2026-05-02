@@ -3,11 +3,11 @@
 }
 
 :{$PORT} {
-    # Using relative path from the 'frontend' root directory
-    root * ./dist
+    root * dist
+
+    encode gzip
 
     file_server
 
-    # Standard routing for React/Vite SPAs
     try_files {path} /index.html
 }

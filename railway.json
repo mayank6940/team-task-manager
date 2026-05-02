@@ -2,10 +2,10 @@
   "$schema": "https://railway.app/railway.schema.json",
   "build": {
     "builder": "NIXPACKS",
-    "buildCommand": "npm install && npm run build"
+    "buildCommand": "cd frontend && npm install && npm run build"
   },
   "deploy": {
-    "startCommand": "caddy run --config Caddyfile --adapter caddyfile",
+    "startCommand": "cd frontend && caddy run --config Caddyfile --adapter caddyfile",
     "restartPolicyType": "ON_FAILURE"
   }
 }
